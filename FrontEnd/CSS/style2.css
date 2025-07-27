@@ -1,3 +1,7 @@
+/* ============================
+   GLOBAL STYLES & RESET
+   ============================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +17,11 @@ body {
     height: 5000px;
 }
 
+/* ============================
+   HEADER & NAVIGATION STYLES
+   ============================ */
+
+/* Top Bar Section 1 - Logo */
 .topbar1 {
     text-align: center;
     font-size: 23px;
@@ -36,6 +45,7 @@ body {
     height: 40px;
 }
 
+/* Container Layout */
 .container1 {
     display: flex;
     border-left: 0.2px solid white;
@@ -53,6 +63,7 @@ body {
     z-index: 1;
 }
 
+/* Contact Information Section */
 .cons {
     padding: 15px 0px 10px 10px;
     border: 0.2px solid rgb(2, 2, 2);
@@ -62,9 +73,14 @@ body {
     width: 1040px;
     background-color: rgb(6, 6, 71);
     color: white;
-
 }
 
+.cons i {
+    margin-left: 18px;
+    margin-right: 5px;
+}
+
+/* Social Media Section */
 .socials {
     padding: 15px 14px 5px 10px;
     border: 0.2px solid rgb(7, 6, 6);
@@ -77,6 +93,11 @@ body {
     color: white;
 }
 
+.socials i {
+    margin-right: 20px;
+}
+
+/* Navigation Links */
 .nav-links {
     display: flex;
     padding: 22px 19px 15px 40px;
@@ -93,20 +114,28 @@ body {
     color: white;
 }
 
-.nav-links li img {
+.nav-links li {
+    margin-right: 15px;
+}
 
+.nav-links li img {
     width: 16px;
     height: 16px;
     margin: 5px;
     vertical-align: middle;
-
 }
 
-.nav-links>li {
+.nav-links > li {
     position: relative;
     padding-bottom: 10px;
 }
 
+.nav-links a,
+.nav-links li .dropdown a {
+    text-decoration: none;
+}
+
+/* Dropdown Menu Styles */
 .nav-links li .dropdown {
     list-style: none;
     position: absolute;
@@ -125,6 +154,7 @@ body {
     pointer-events: none;
     z-index: 999;
 }
+
 .nav-links li:hover .dropdown,
 .nav-links li .dropdown:hover {
     opacity: 1;
@@ -132,6 +162,8 @@ body {
     transform: scaleY(1);
     pointer-events: auto;
 }
+
+/* Dropdown Items */
 .dropdown li {
     font-size: 14px;
     line-height: 1.4;
@@ -151,12 +183,6 @@ body {
 .nav-links li .dropdown li a {
     color: black;
 }
-.nav-links a,
-.nav-links li .dropdown a {
-    text-decoration: none;
-}
-
-
 
 .dropdown li a {
     position: relative;
@@ -178,13 +204,7 @@ body {
     width: 100%;
 }
 
-.start {
-    padding: 13px 19px 15px 20px;
-    display: flex;
-    width: 260px;
-    height: 85px;
-}
-
+/* Main Navigation Bar */
 .navbar {
     display: flex;
     z-index: 3;
@@ -192,13 +212,16 @@ body {
     position: relative;
 }
 
-.cons i {
-    margin-left: 18px;
-    margin-right: 5px;
-}
+/* ============================
+   BUTTONS & SEARCH SECTION
+   ============================ */
 
-.socials i {
-    margin-right: 20px;
+/* Search & Start Section */
+.start {
+    padding: 13px 19px 15px 20px;
+    display: flex;
+    width: 260px;
+    height: 85px;
 }
 
 .start .search {
@@ -208,6 +231,7 @@ body {
     color: white;
 }
 
+/* Button Styles */
 .get-started-btn,
 .contact-btn {
     font-size: medium;
@@ -222,17 +246,14 @@ body {
     height: 49px;
     width: 170px;
     color: white;
-
     overflow: hidden;
     z-index: 1;
     transition: color 0.5s ease;
-
 }
 
 .get-started-btn:hover,
 .contact-btn:hover {
     color: black;
-
 }
 
 .get-started-btn::before,
@@ -266,13 +287,19 @@ body {
 .get-started-btn:hover .arrow,
 .contact-btn:hover .arrow {
     transform: rotate(-45deg);
-
 }
 
-.nav-links li {
-    margin-right: 15px;
+.contact-btn {
+    position: absolute;
+    top: 600px;
+    left: 20px;
 }
 
+/* ============================
+   HERO SECTION & BACKGROUND
+   ============================ */
+
+/* Main Container */
 .container-main {
     height: 1080px;
     position: relative;
@@ -280,6 +307,7 @@ body {
     z-index: 0;
 }
 
+/* Background Slides */
 .bg-slide {
     position: absolute;
     top: 0;
@@ -289,12 +317,9 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     opacity: 0;
-    transition: opacity 1.5s ease-in-out,
-        transform 10s ease-in-out;
+    transition: opacity 1.5s ease-in-out, transform 10s ease-in-out;
     z-index: 0;
-
 }
 
 .bg-slide::after {
@@ -302,32 +327,23 @@ body {
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    /* adjust darkness here */
     z-index: 1;
-    /* higher than bg image, lower than text */
     pointer-events: none;
-    /* allows clicks to pass through */
 }
 
-@keyframes zoomEffect {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1.1);
-    }
-}
-
-.container-main>.navbar,
+/* Layering */
+.container-main > .navbar,
 .Evaluate,
 .Partner {
     position: relative;
     z-index: 2;
 }
 
+/* ============================
+   HERO CONTENT SECTIONS
+   ============================ */
 
-
+/* Evaluate Section */
 .Evaluate {
     position: relative;
     left: 100px;
@@ -346,7 +362,6 @@ body {
     line-height: 1.4;
     font-weight: 500;
     border-bottom: 1px solid white;
-
 }
 
 .text1 {
@@ -360,6 +375,7 @@ body {
     color: #ebebeb;
 }
 
+/* Partner Section */
 .Partner {
     position: relative;
     left: 100px;
@@ -399,19 +415,15 @@ body {
     color: #ebebeb;
 }
 
-.contact-btn {
-    position: absolute;
-    top: 600px;
-    left: 20px;
-}
+/* ============================
+   SERVICES SECTION
+   ============================ */
 
-
-
+/* Services Container */
 .Sub-Container1 {
     height: 1160px;
     background-color: white;
     width: 100%;
-
 }
 
 .ourservice {
@@ -547,6 +559,7 @@ body {
     /* Turn white */
 }
 
+/* Service Box Hover Background Effects */
 .service-box::before {
     content: "";
     position: absolute;
@@ -564,7 +577,6 @@ body {
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.6);
-    /* Dark overlay */
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease-in-out;
@@ -575,26 +587,24 @@ body {
     transform: scaleX(1);
 }
 
-/* On hover: slide background in from left */
 .service-box:hover::before {
     transform: scaleX(1);
 }
 
-/* Ensure content is above background */
+/* Content Layering */
 .service-box * {
     position: relative;
     z-index: 1;
     transition: color 0.3s ease;
 }
 
-/* Optional: darker text when bg is shown */
 .service-box:hover h4,
 .service-box:hover p,
 .service-box:hover i {
     color: white;
 }
 
-/* Specific background images using nth-child */
+/* Background Images for Each Service Box */
 .service-box:nth-child(1)::before {
     background-image: url('../IMAGES/personal.jpg');
 }
@@ -618,6 +628,10 @@ body {
 .service-box:nth-child(6)::before {
     background-image: url('../IMAGES/smallbiz.jpg');
 }
+
+/* ============================
+   VIEW ALL SERVICES BUTTON
+   ============================ */
 
 .view-btn {
     font-size: medium;
@@ -682,6 +696,7 @@ body {
 }
 
 .service-box::before,
+/* Additional Animation Effects */
 .service-box::after {
     content: "";
     position: absolute;
@@ -691,7 +706,6 @@ body {
     transform: scaleX(0);
     transform-origin: left;
     opacity: 0;
-    /* ✨ add this */
     transition: transform 0.4s ease-in-out, opacity 0.5s ease-in-out;
     z-index: 0;
 }
@@ -700,20 +714,46 @@ body {
 .service-box:hover::after {
     transform: scaleX(1);
     opacity: 1;
-    /* ✨ fade in */
 }
+
+/* ============================
+   ANIMATIONS & KEYFRAMES
+   ============================ */
 
 @keyframes slideFadeIn {
     0% {
         transform: translateX(-50px);
         opacity: 0;
     }
-
     100% {
         transform: translateX(0);
         opacity: 1;
     }
 }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomEffect {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* ============================
+   UTILITY CLASSES
+   ============================ */
 
 .text-container {
     animation: slideFadeIn 1.3s ease-out forwards;
