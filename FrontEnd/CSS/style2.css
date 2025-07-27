@@ -50,6 +50,7 @@ body {
     border-right: none;
     height: 80px;
     overflow: visible;
+    z-index: 2;
 }
 
 .cons {
@@ -158,12 +159,12 @@ body {
     transform: translateY(0)
 }
 
-.dropdown li span {
+.dropdown li a {
     position: relative;
     display: inline-block;
 }
 
-.dropdown li span::after {
+.dropdown li a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -174,7 +175,7 @@ body {
     transition: width 0.6s ease;
 }
 
-.dropdown li:hover span::after {
+.dropdown li:hover a::after {
     width: 100%;
 }
 
@@ -187,6 +188,9 @@ body {
 
 .navbar {
     display: flex;
+    z-index: 3;
+    overflow: visible;
+    position: relative;
 }
 
 .cons i {
