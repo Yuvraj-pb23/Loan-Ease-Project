@@ -42,14 +42,14 @@
 
                         <div class="container2">
 
-                            <div class="nav-links">
+                            <ul class="nav-links">
 
                                 <li>
                                     <a href='#'><b>Home</b><img src="../IMAGES/icons8-expand-arrow-24.png" alt="icon"></a>
                                     <ul class="dropdown">
-                                        <li><a href='#'>Home1</a></li>
-                                        <li><a href='#'>Home2</a></li>
-                                        <li><a href='#'>Home3</a></li>
+                                        <li><a href='index.html'>Home</a></li>
+                                        <li><a href='home-v2.html'>Home V2</a></li>
+                                        <li><a href='home-v3.html'>Home V3</a></li>
                                     </ul>
                                 </li>
 
@@ -57,9 +57,9 @@
                                 <li>
                                     <a href='#'><b>Pages</b> <img src="../IMAGES/icons8-expand-arrow-24.png" alt="icon"></a>
                                     <ul class="dropdown">
-                                        <li><a href='#'>Pages 1</a></li>
-                                        <li><a href='#'>Pages 2</a></li>
-                                        <li><a href='#'>Pages 3</a></li>
+                                        <li><a href='about.html'>About Us</a></li>
+                                        <li><a href='team.html'>Our Team</a></li>
+                                        <li><a href='faq.html'>FAQ</a></li>
                                     </ul>
                                 </li>
 
@@ -67,9 +67,9 @@
                                 <li>
                                     <a href='#'><b>Services</b> <img src="../IMAGES/icons8-expand-arrow-24.png" alt="icon"></a>
                                     <ul class="dropdown">
-                                        <li><a href='#'>Services 1</a></li>
-                                        <li><a href='#'>Services 2</a></li>
-                                        <li><a href='#'>Services 3</a></li>
+                                        <li><a href='personal-loans.html'>Personal Loans</a></li>
+                                        <li><a href='business-loans.html'>Business Loans</a></li>
+                                        <li><a href='mortgage-loans.html'>Mortgage Loans</a></li>
                                     </ul>
                                 </li>
 
@@ -77,9 +77,9 @@
                                 <li>
                                     <a href='#'><b>Portfolio</b> <img src="../IMAGES/icons8-expand-arrow-24.png" alt="icon"></a>
                                     <ul class="dropdown">
-                                        <li><a href='#'>Portfolio 1</a></li>
-                                        <li><a href='#'>Portfolio 2</a></li>
-                                        <li><a href='#'>Portfolio 3</a></li>
+                                        <li><a href='portfolio-grid.html'>Portfolio Grid</a></li>
+                                        <li><a href='portfolio-list.html'>Portfolio List</a></li>
+                                        <li><a href='portfolio-single.html'>Single Project</a></li>
                                     </ul>
                                 </li>
 
@@ -87,18 +87,18 @@
                                 <li>
                                     <a href='#'><b>Blog</b> <img src="../IMAGES/icons8-expand-arrow-24.png" alt="icon"></a>
                                     <ul class="dropdown">
-                                        <li><a href='#'>Blog 1</a></li>
-                                        <li><a href='#'>Blog 2</a></li>
-                                        <li><a href='#'>Blog 3</a></li>
+                                        <li><a href='blog.html'>Blog</a></li>
+                                        <li><a href='blog-single.html'>Blog Post</a></li>
+                                        <li><a href='news.html'>News</a></li>
                                     </ul>
                                 </li>
 
 
                                 <li>
-                                    <b>Contact Us</b>
+                                    <a href='contact.html'><b>Contact Us</b></a>
                                 </li>
 
-                            </div>
+                            </ul>
 
                             <div class="start">
 
@@ -273,8 +273,23 @@
 
         </div>
 
+        <div class="Sub-Container2">
+            <div class="Image-left">
+                <img src="../IMAGES/image left.jpg" alt="image">
+            </div>
+            <div class="Information">
+
+            </div>
+            <div class="calc">
+
+            </div>
+
+        </div>s
+
 
     </div>
+
+
     <script>
         const images = [
             "../IMAGES/background1.jpg",
@@ -360,6 +375,161 @@
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         }, 11000);
+    </script>
+
+    <script>
+        // Ultra-robust dropdown navigation handler with fixed positioning
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-links > li');
+            let activeDropdown = null;
+            let closeTimeout = null;
+            let isMouseOverNavArea = false;
+
+            // Function to position dropdown using fixed positioning
+            function positionDropdown(navItem, dropdown) {
+                const rect = navItem.getBoundingClientRect();
+                dropdown.style.left = rect.left + 'px';
+                dropdown.style.top = (rect.bottom + 5) + 'px'; // 5px gap below nav item
+            }
+
+            // Function to get extended bounds for hover detection
+            function getExtendedBounds(navItem, dropdown) {
+                const navRect = navItem.getBoundingClientRect();
+                const dropdownRect = dropdown.getBoundingClientRect();
+                
+                return {
+                    left: Math.min(navRect.left - 25, dropdownRect.left - 25),
+                    right: Math.max(navRect.right + 25, dropdownRect.right + 25),
+                    top: navRect.top - 15,
+                    bottom: Math.max(navRect.bottom + 40, dropdownRect.bottom + 15)
+                };
+            }
+
+            // Function to check if mouse is within extended bounds
+            function isMouseInExtendedArea(mouseX, mouseY, bounds) {
+                return mouseX >= bounds.left && 
+                       mouseX <= bounds.right && 
+                       mouseY >= bounds.top && 
+                       mouseY <= bounds.bottom;
+            }
+
+            // Global mouse move handler for precise hover detection
+            document.addEventListener('mousemove', function(e) {
+                if (!activeDropdown) return;
+
+                const navItem = activeDropdown.parentElement;
+                const bounds = getExtendedBounds(navItem, activeDropdown);
+                const isInArea = isMouseInExtendedArea(e.clientX, e.clientY, bounds);
+
+                if (isInArea) {
+                    // Mouse is in extended hover area - keep dropdown open
+                    clearTimeout(closeTimeout);
+                    closeTimeout = null;
+                    isMouseOverNavArea = true;
+                } else {
+                    // Mouse is outside extended area - start close timer
+                    isMouseOverNavArea = false;
+                    if (!closeTimeout) {
+                        closeTimeout = setTimeout(() => {
+                            if (activeDropdown && !isMouseOverNavArea) {
+                                activeDropdown.classList.remove('show');
+                                activeDropdown = null;
+                            }
+                            closeTimeout = null;
+                        }, 100); // Short delay
+                    }
+                }
+            });
+
+            // Handle window resize/scroll to reposition dropdowns
+            function handlePositionUpdate() {
+                if (activeDropdown) {
+                    const navItem = activeDropdown.parentElement;
+                    positionDropdown(navItem, activeDropdown);
+                }
+            }
+
+            window.addEventListener('resize', handlePositionUpdate);
+            window.addEventListener('scroll', handlePositionUpdate);
+
+            navItems.forEach(navItem => {
+                const dropdown = navItem.querySelector('.dropdown');
+                if (!dropdown) return;
+
+                // Function to show dropdown
+                function showDropdown() {
+                    clearTimeout(closeTimeout);
+                    closeTimeout = null;
+                    isMouseOverNavArea = true;
+                    
+                    // Hide any other active dropdown
+                    if (activeDropdown && activeDropdown !== dropdown) {
+                        activeDropdown.classList.remove('show');
+                    }
+                    
+                    // Position and show this dropdown
+                    positionDropdown(navItem, dropdown);
+                    activeDropdown = dropdown;
+                    dropdown.classList.add('show');
+                }
+
+                // Mouse enter on nav item
+                navItem.addEventListener('mouseenter', showDropdown);
+
+                // Handle clicks and hover on dropdown items with manual animation triggers
+                const dropdownItems = dropdown.querySelectorAll('li a');
+                dropdownItems.forEach(item => {
+                    const listItem = item.parentElement;
+                    
+                    // Mouse enter - trigger hover animation manually
+                    listItem.addEventListener('mouseenter', function() {
+                        // Keep dropdown open
+                        clearTimeout(closeTimeout);
+                        closeTimeout = null;
+                        isMouseOverNavArea = true;
+                        
+                        // Manually trigger hover animation
+                        listItem.classList.add('hover-active');
+                    });
+                    
+                    // Mouse leave - remove hover animation
+                    listItem.addEventListener('mouseleave', function() {
+                        // Remove hover animation
+                        listItem.classList.remove('hover-active');
+                    });
+                    
+                    // Also add hover events directly on the link
+                    item.addEventListener('mouseenter', function() {
+                        clearTimeout(closeTimeout);
+                        closeTimeout = null;
+                        isMouseOverNavArea = true;
+                        listItem.classList.add('hover-active');
+                    });
+                    
+                    item.addEventListener('mouseleave', function() {
+                        listItem.classList.remove('hover-active');
+                    });
+                    
+                    item.addEventListener('click', function(e) {
+                        // Don't prevent default - allow navigation
+                        console.log('Navigating to:', this.textContent);
+                        
+                        // Close dropdown after click
+                        dropdown.classList.remove('show');
+                        activeDropdown = null;
+                    });
+                });
+            });
+
+            // Close dropdown when clicking outside navigation area
+            document.addEventListener('click', function(e) {
+                const isNavClick = e.target.closest('.nav-links');
+                if (!isNavClick && activeDropdown) {
+                    activeDropdown.classList.remove('show');
+                    activeDropdown = null;
+                }
+            });
+        });
     </script>
 
 

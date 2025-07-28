@@ -50,6 +50,8 @@ body {
     display: flex;
     border-left: 0.2px solid white;
     height: 60px;
+    overflow: visible;
+    position: relative;
 }
 
 .container2 {
@@ -61,6 +63,21 @@ body {
     height: 80px;
     overflow: visible;
     z-index: 1;
+}
+
+/* Ensure all navigation containers allow dropdown overflow */
+.topbar2 {
+    position: relative;
+    overflow: visible;
+    z-index: 3;
+    height: auto; /* Allow height to expand for dropdowns */
+    min-height: 80px;
+}
+
+.main.nav {
+    position: relative;
+    overflow: visible;
+    height: auto; /* Allow height to expand */
 }
 
 /* Contact Information Section */
@@ -108,14 +125,21 @@ body {
     font-size: 17px;
     font-weight: 300;
     color: white;
+    z-index: 4;
 }
 
 .nav-links a {
     color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-links > li > a:hover {
+    color: #d1d1d1;
 }
 
 .nav-links li {
     margin-right: 15px;
+    position: relative;
 }
 
 .nav-links li img {
@@ -127,20 +151,22 @@ body {
 
 .nav-links > li {
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 10px; /* Reduced padding - JavaScript will handle hover */
 }
+
+/* Remove the hover area extension - JavaScript will handle this */
 
 .nav-links a,
 .nav-links li .dropdown a {
     text-decoration: none;
 }
 
-/* Dropdown Menu Styles */
+/* Dropdown Menu Styles - Fixed positioning to bypass container issues */
 .nav-links li .dropdown {
     list-style: none;
-    position: absolute;
-    top: 58px;
-    left: 0;
+    position: fixed; /* Fixed positioning to bypass all container constraints */
+    top: 238px; /* Approximate position - will be adjusted by JavaScript if needed */
+    left: 0; /* Will be calculated by JavaScript */
     min-width: 190px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -148,59 +174,109 @@ body {
 
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform 0.5s ease-in-out, opacity 0.7s ease-in-out;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
     
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    z-index: 999;
+    z-index: 99999; /* Ultra-high z-index */
 }
 
-.nav-links li:hover .dropdown,
-.nav-links li .dropdown:hover {
+/* Show dropdown when active class is added by JavaScript */
+.nav-links li .dropdown.show {
     opacity: 1;
     visibility: visible;
     transform: scaleY(1);
     pointer-events: auto;
 }
 
-/* Dropdown Items */
+/* Remove all pseudo-element bridges - JavaScript will handle this */
+
+/* Dropdown Items - Enhanced with better specificity */
 .dropdown li {
     font-size: 14px;
-    line-height: 1.4;
+    line-height: 1.3;
     font-weight: 400;
+}
+.dropdown {
+    z-index: 99999; /* Already good */
+    pointer-events: auto !important; /* Force clickable */
+    position: fixed; /* Already good */
+     background-color: rgba(255, 255, 255, 0.97);
 }
 
 .nav-links li .dropdown li {
     position: relative;
-    padding: 15px;
+    padding: 0;
+    margin: 0;
     white-space: nowrap;
     cursor: pointer;
     color: black;
     background-color: white;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to visible */
+    transition: background-color 0.6s ease;
+    display: block;
+}
+.nav-links li .dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li .dropdown li:hover {
+    background-color: #ffffff;
 }
 
 .nav-links li .dropdown li a {
-    color: black;
-}
-
-.dropdown li a {
     position: relative;
-    display: inline-block;
+    display: block;
+    text-decoration: none;
+    color: black;
+    transition: color 0.7s ease;
+    padding: 12px 18px; 
+    z-index: 10;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 1);
 }
 
-.dropdown li a::after {
+/* Enhanced underline animation with higher specificity */
+.nav-links li .dropdown li a::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -1px;
-    height: 1px;
-    width: 0%;
-    background-color: black;
-    transition: width 0.6s ease;
+    bottom: 6px;
+    height: 2px;
+    width: 0;
+    background-color: #000;
+    background: linear-gradient(90deg, #000 0%, #333 100%);
+    transition: width 0.5s ease-in-out;
+    transform-origin: left;
+    z-index: 10;
 }
 
-.dropdown li:hover a::after {
+/* Multiple hover selectors with !important to ensure they work */
+.nav-links li .dropdown li:hover a::after,
+.dropdown li:hover a::after,
+.nav-links li .dropdown.show li:hover a::after {
+    width: 100% !important;
+}
+
+/* Text color change on hover */
+.nav-links li .dropdown li:hover a,
+.dropdown li:hover a {
+    color: #000000;
+}
+
+/* Force animation class - triggered by JavaScript */
+.dropdown li.hover-active a::after,
+.nav-links li .dropdown li.hover-active a::after {
+    width: 100% !important;
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Backup animation using focus */
+.dropdown li a:focus::after,
+.nav-links li .dropdown li a:focus::after {
     width: 100%;
 }
 
@@ -320,6 +396,9 @@ body {
     opacity: 0;
     transition: opacity 1.5s ease-in-out, transform 10s ease-in-out;
     z-index: 0;
+}
+.bg-slide, .some-overlay-class {
+    pointer-events: none; /* If they sit above dropdown */
 }
 
 .bg-slide::after {
@@ -757,4 +836,33 @@ body {
 
 .text-container {
     animation: slideFadeIn 1.3s ease-out forwards;
+}
+
+
+
+.Sub-Container2{
+    height:750px;
+    width: 100%;
+    background-color: #dadcf4;
+    display: flex;
+    flex-direction: row;
+}
+.Sub-Container2 .Image-left, .Image-left img{
+    height:750px;
+    width:348.2px;
+    object-fit: cover;
+}
+.Sub-Container2 .Information{
+    height:600px;
+    width:700px;
+    background-color:black;
+    margin-top: 100px;
+    margin-left: 10px;
+}
+.Sub-Container2 .calc {
+    height: 500px;
+    width: 400px;
+    background-color: black;
+    margin-top:120px;
+    margin-left: 40px;
 }
