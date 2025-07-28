@@ -1,0 +1,828 @@
+/* ============================
+   GLOBAL STYLES & RESET
+   ============================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: auto;
+}
+
+body {
+    font-family: "DM Sans", system-ui;
+}
+
+.Container {
+    height: 5000px;
+}
+
+/* ============================
+   HEADER & NAVIGATION STYLES
+   ============================ */
+
+/* Top Bar Section 1 - Logo */
+.topbar1 {
+    text-align: center;
+    font-size: 23px;
+    padding: 50px 33px 40px 33px;
+    border-bottom: 0.2px solid white;
+    height: 140px;
+    display: flex;
+    width: 300px;
+    color: rgb(250, 250, 250);
+    vertical-align: middle;
+}
+
+.topbar1 img {
+    width: 35px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+}
+
+.topbar1 span {
+    height: 40px;
+}
+
+/* Container Layout */
+.container1 {
+    display: flex;
+    border-left: 0.2px solid white;
+    height: 60px;
+    overflow: visible;
+    position: relative;
+}
+
+.container2 {
+    display: flex;
+    position: relative;
+    border: 0.2px solid white;
+    border-top: none;
+    border-right: none;
+    height: 80px;
+    overflow: visible;
+    z-index: 1;
+}
+
+/* Ensure all navigation containers allow dropdown overflow */
+.topbar2 {
+    position: relative;
+    overflow: visible;
+    z-index: 3;
+    height: auto; /* Allow height to expand for dropdowns */
+    min-height: 80px;
+}
+
+.main.nav {
+    position: relative;
+    overflow: visible;
+    height: auto; /* Allow height to expand */
+}
+
+/* Contact Information Section */
+.cons {
+    padding: 15px 0px 10px 10px;
+    border: 0.2px solid rgb(2, 2, 2);
+    border-right: none;
+    border-top: none;
+    max-height: 50px;
+    width: 1040px;
+    background-color: rgb(6, 6, 71);
+    color: white;
+}
+
+.cons i {
+    margin-left: 18px;
+    margin-right: 5px;
+}
+
+/* Social Media Section */
+.socials {
+    padding: 15px 14px 5px 10px;
+    border: 0.2px solid rgb(7, 6, 6);
+    border-left: none;
+    border-right: none;
+    max-height: 50px;
+    width: 250px;
+    text-align: right;
+    background-color: rgb(6, 6, 71);
+    color: white;
+}
+
+.socials i {
+    margin-right: 20px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    padding: 22px 19px 15px 40px;
+    width: 1030px;
+    list-style: none;
+    position: relative;
+    gap: 20px;
+    font-size: 17px;
+    font-weight: 300;
+    color: white;
+    z-index: 4;
+}
+
+.nav-links a {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-links > li > a:hover {
+    color: #d1d1d1;
+}
+
+.nav-links li {
+    margin-right: 15px;
+    position: relative;
+}
+
+.nav-links li img {
+    width: 16px;
+    height: 16px;
+    margin: 5px;
+    vertical-align: middle;
+}
+
+.nav-links > li {
+    position: relative;
+    padding-bottom: 10px; /* Reduced padding - JavaScript will handle hover */
+}
+
+.nav-links a,
+.nav-links li .dropdown a {
+    text-decoration: none;
+}
+
+/* Dropdown Menu Styles - Enhanced for better clickability */
+.nav-links li .dropdown {
+    list-style: none;
+    position: absolute; /* Changed from fixed to absolute for better positioning */
+    top: 100%; /* Position relative to parent nav item */
+    left: 0;
+    min-width: 190px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid black;
+    margin: 0;
+    padding: 0;
+
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 999999; /* Ultra-high z-index */
+}
+
+/* Show dropdown when active class is added by JavaScript */
+.nav-links li .dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scaleY(1);
+    pointer-events: auto;
+}
+
+/* Dropdown Items - Enhanced with better specificity */
+.dropdown li {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 400;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    color: black;
+    background-color: white;
+    overflow: visible;
+    transition: background-color 0.6s ease;
+    display: block;
+    pointer-events: auto; /* Ensure items are clickable */
+}
+
+.nav-links li .dropdown li:hover {
+    background-color: #f8f8f8;
+}
+
+.nav-links li .dropdown li a,
+.dropdown li a {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: black;
+    transition: color 0.7s ease;
+    padding: 12px 18px; 
+    z-index: 10;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 1);
+    pointer-events: auto; /* Ensure links are clickable */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Enhanced underline animation with higher specificity */
+.nav-links li .dropdown li a::after,
+.dropdown li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 6px;
+    height: 2px;
+    width: 0;
+    background-color: #000;
+    background: linear-gradient(90deg, #000 0%, #333 100%);
+    transition: width 0.5s ease-in-out;
+    transform-origin: left;
+    z-index: 10;
+    pointer-events: none; /* Underline shouldn't interfere with clicks */
+}
+
+/* Multiple hover selectors with !important to ensure they work */
+.nav-links li .dropdown li:hover a::after,
+.dropdown li:hover a::after,
+.nav-links li .dropdown.show li:hover a::after {
+    width: 100% !important;
+}
+
+/* Text color change on hover */
+.nav-links li .dropdown li:hover a,
+.dropdown li:hover a {
+    color: #000000;
+}
+
+/* Force animation class - triggered by JavaScript */
+.dropdown li.hover-active a::after,
+.nav-links li .dropdown li.hover-active a::after {
+    width: 100% !important;
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Backup animation using focus */
+.dropdown li a:focus::after,
+.nav-links li .dropdown li a:focus::after {
+    width: 100%;
+}
+
+/* Main Navigation Bar */
+.navbar {
+    display: flex;
+    z-index: 3;
+    overflow: visible;
+    position: relative;
+}
+
+/* ============================
+   BUTTONS & SEARCH SECTION
+   ============================ */
+
+/* Search & Start Section */
+.start {
+    padding: 13px 19px 15px 20px;
+    display: flex;
+    width: 260px;
+    height: 85px;
+}
+
+.start .search {
+    padding: 10px 30px 10px 0px;
+    width: 30px;
+    font-size: 20px;
+    color: white;
+}
+
+/* Button Styles */
+.get-started-btn,
+.contact-btn {
+    font-size: medium;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 11px 5px 11px 9px;
+    border-radius: 30px;
+    border: 1px solid white;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+    height: 49px;
+    width: 170px;
+    color: white;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.5s ease;
+}
+
+.get-started-btn:hover,
+.contact-btn:hover {
+    color: black;
+}
+
+.get-started-btn::before,
+.contact-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 800%;
+    background: white;
+    transform: translate(-100%, -100%) rotate(120deg);
+    transition: transform 0.8s ease;
+    z-index: -1;
+}
+
+.get-started-btn:hover::before,
+.contact-btn:hover::before {
+    transform: translate(-50%, -50%) rotate(120deg);
+}
+
+.get-started-btn .arrow,
+.contact-btn .arrow {
+    margin: 0px 6px;
+    display: inline-block;
+    transition: transform 0.4s ease;
+    transform-origin: center center;
+    font-size: 14px;
+}
+
+.get-started-btn:hover .arrow,
+.contact-btn:hover .arrow {
+    transform: rotate(-45deg);
+}
+
+.contact-btn {
+    position: absolute;
+    top: 600px;
+    left: 20px;
+}
+
+/* ============================
+   HERO SECTION & BACKGROUND
+   ============================ */
+
+/* Main Container */
+.container-main {
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* Background Slides */
+.bg-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1080px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out, transform 10s ease-in-out;
+    z-index: 0;
+    pointer-events: none; /* Background slides shouldn't interfere with dropdown clicks */
+}
+
+.bg-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Layering */
+.container-main > .navbar,
+.Evaluate,
+.Partner {
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================
+   HERO CONTENT SECTIONS
+   ============================ */
+
+/* Evaluate Section */
+.Evaluate {
+    position: relative;
+    left: 100px;
+    height: 600px;
+    width: 850px;
+}
+
+.head1 {
+    height: 220px;
+    width: 800px;
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    font-size: 45px;
+    color: rgb(240, 238, 230);
+    line-height: 1.4;
+    font-weight: 500;
+    border-bottom: 1px solid white;
+}
+
+.text1 {
+    position: absolute;
+    top: 480px;
+    left: 20px;
+    width: 800px;
+    height: 50px;
+    font-size: 19px;
+    font-weight: 400;
+    color: #ebebeb;
+}
+
+/* Partner Section */
+.Partner {
+    position: relative;
+    left: 100px;
+    height: 600px;
+    width: 850px;
+    color: #fff;
+    z-index: 2;
+    display: block;
+}
+
+.Partner.active {
+    display: block;
+}
+
+.Partner .head2 {
+    height: 220px;
+    width: 800px;
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    font-size: 45px;
+    color: rgb(240, 238, 230);
+    line-height: 1.4;
+    font-weight: 500;
+    border-bottom: 1px solid white;
+    text-align: left;
+}
+
+.Partner .text2 {
+    position: absolute;
+    top: 480px;
+    left: 20px;
+    width: 800px;
+    height: 50px;
+    font-size: 19px;
+    font-weight: 400;
+    color: #ebebeb;
+}
+
+/* ============================
+   SERVICES SECTION
+   ============================ */
+
+/* Services Container */
+.Sub-Container1 {
+    height: 1160px;
+    background-color: white;
+    width: 100%;
+}
+
+.ourservice {
+    height: 35px;
+    width: 200px;
+    padding-top: 5px;
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 2.2px;
+    font-size: 13px;
+    font-weight: 450;
+    display: inline-block;
+    margin-bottom: 18px;
+}
+
+.headbox {
+    height: 244px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.head2-sub1 {
+    height: 160px;
+    width: 800px;
+    display: inline-block;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.service-container {
+    max-width: 1378px;
+    margin: 40px 80px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.service-box {
+    display: flex;
+    align-items: center;
+    column-gap: 32px;
+    width: 680px;
+    height: 240px;
+    padding: 55px;
+    border: 1px solid #ebebeb;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    z-index: 3;
+}
+
+.service-box .icon i {
+    font-size: 75px;
+}
+
+.service-box .arrow a {
+    color: #0f1011;
+    font-size: 23px;
+    padding: 11px;
+    background-color: #F2F4F8;
+    border-radius: 100%;
+
+    margin: 0px 6px;
+    display: inline-block;
+    transition: transform 0.4s ease;
+    transform-origin: center center;
+}
+
+.service-box .info h4 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+
+.service-box .info p {
+    color: #5a5a5a;
+    font-size: 19px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.service-box:hover .arrow a {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: rotate(-45deg);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.head2-sub1 {
+    opacity: 0;
+    /* Initially hidden */
+    transform: translateY(30px);
+    /* Start position */
+    transition: opacity 0.5s ease, transform 1s ease;
+}
+
+/* This class will be added by JS on scroll */
+.head2-sub1.fade-in {
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+.service-box .icon img {
+    transition: transform 0.6s, filter 0.4s;
+}
+
+.service-box:hover .icon img {
+    transform: scaleX(-1);
+    /* Flip horizontally */
+    filter: brightness(0) invert(1);
+    /* Turn white */
+}
+
+.service-box .info {
+    transition: filter 0.4s;
+}
+
+.service-box:hover .info {
+    filter: brightness(0) invert(1);
+    /* Turn white */
+}
+
+/* Service Box Hover Background Effects */
+.service-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.service-box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.service-box:hover::after {
+    transform: scaleX(1);
+}
+
+.service-box:hover::before {
+    transform: scaleX(1);
+}
+
+/* Content Layering */
+.service-box * {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.service-box:hover h4,
+.service-box:hover p,
+.service-box:hover i {
+    color: white;
+}
+
+/* Background Images for Each Service Box */
+.service-box:nth-child(1)::before {
+    background-image: url('../IMAGES/personal.jpg');
+}
+
+.service-box:nth-child(2)::before {
+    background-image: url('../IMAGES/emergency.jpg');
+}
+
+.service-box:nth-child(3)::before {
+    background-image: url('../IMAGES/business.jpg');
+}
+
+.service-box:nth-child(4)::before {
+    background-image: url('../IMAGES/education.jpg');
+}
+
+.service-box:nth-child(5)::before {
+    background-image: url('../IMAGES/mortgage.jpg');
+}
+
+.service-box:nth-child(6)::before {
+    background-image: url('../IMAGES/smallbiz.jpg');
+}
+
+/* ============================
+   VIEW ALL SERVICES BUTTON
+   ============================ */
+
+.view-btn {
+    font-size: medium;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 11px 5px 11px 9px;
+    border-radius: 30px;
+    border: 1px solid rgb(0, 0, 0);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+    height: 49px;
+    width: 170px;
+    color: rgb(0, 0, 0);
+
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.5s ease;
+
+}
+
+.view-btn:hover {
+    color: rgb(255, 255, 255);
+
+}
+
+.view-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 800%;
+    background: rgb(0, 0, 0);
+    transform: translate(-100%, -100%) rotate(120deg);
+    transition: transform 0.8s ease;
+    z-index: -1;
+}
+
+.view-btn:hover::before {
+    transform: translate(-50%, -50%) rotate(120deg);
+}
+
+.view-btn .arrow {
+    margin: 0px 6px;
+    display: inline-block;
+    transition: transform 0.4s ease;
+    transform-origin: center center;
+    font-size: 14px;
+}
+
+.view-btn:hover .arrow {
+    transform: rotate(-45deg);
+
+}
+
+.sub1foot {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.service-box::before,
+/* Additional Animation Effects */
+.service-box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+    transition: transform 0.4s ease-in-out, opacity 0.5s ease-in-out;
+    z-index: 0;
+}
+
+.service-box:hover::before,
+.service-box:hover::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* ============================
+   ANIMATIONS & KEYFRAMES
+   ============================ */
+
+@keyframes slideFadeIn {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomEffect {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* ============================
+   UTILITY CLASSES
+   ============================ */
+
+.text-container {
+    animation: slideFadeIn 1.3s ease-out forwards;
+}
