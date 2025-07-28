@@ -1050,37 +1050,43 @@ body {
     position: relative;
     top: 140px;
     left: 110px;
-    
+
 }
 
 .Sub-Container3 .righttext {
     height: 770px;
     width: 287px;
-    
+
     position: relative;
     top: 140px;
     left: 155px;
 }
-.head5{
-    height:200px;
-    width:100%;
-    
-}
-.image5{
-    height:280px;
-    width:100%;
-    margin-top:10px;
-    
+
+.head5 {
+    height: 200px;
+    width: 100%;
 
 }
-.foot5{
-    height:270px;
-    width:100%;
-    margin-top:2px;
-    
-    
+
+.image5 {
+    height: 320px;
+    width: 100%;
+    margin-top: 10px;
+
+
 }
-.whychoose{
+
+.foot5 {
+    height: 206px;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.whychoose {
     height: 35px;
     width: 200px;
     padding-top: 5px;
@@ -1092,9 +1098,88 @@ body {
     font-weight: 450;
     display: inline-block;
     margin-bottom: 18px;
-    color:white;
+    color: white;
 }
-.head5 .text{
-    color:white;
+
+.head5 .text {
+    color: white;
     font-size: 40px;
+}
+
+.foot5 .sec {
+    height: 100%;
+    width: 330px;
+    padding: 20px;
+
+}
+
+.foot5 .sec .head {
+    height: 80px;
+    width: 100%;
+    vertical-align: middle;
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.foot5 .sec .text {
+    padding-left: 10px;
+    height: 100%;
+    width: 100%;
+    color: rgb(161, 159, 159);
+}
+
+.foot5 .sec .head h4 {
+    color: white;
+    
+    display: flex;
+    vertical-align: middle;
+}
+.foot5 .sec .head h6{
+    width:277px;
+    height:50px;
+    font-size: 23px;
+    font-weight: 400;
+    padding-top:14px;
+}
+.foot5 .sec .head h4 img{
+    height:66px;
+    width:66px;
+    padding: 6px;
+    transition: transform 0.8s ease-in-out;
+}
+
+/* Horizontal flip animation on hover */
+.foot5 .sec:hover .head h4 img {
+    transform: rotateY(180deg);
+}
+
+.righttext {
+    border-left: 1px solid rgb(255, 255, 255, 0.2);
+}
+
+.righttext .col {
+    margin-left: 80px;
+    height: 770px;
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 44px;
+    justify-content: center;
+    color: white;
+
+}
+
+.righttext .col li h6 {
+    font-size: 90px;
+    text-decoration: none;
+}
+
+.righttext .col li span {
+    text-align: right;
+    padding-bottom: 10px;
+}
+.righttext .col li p {
+    padding-top: 5px;
+    border-top: 1px solid rgb(255, 255, 255, 0.2);
 }
