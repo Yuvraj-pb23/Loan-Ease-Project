@@ -1050,14 +1050,51 @@ body {
     position: relative;
     top: 140px;
     left: 110px;
-    background-color: green;
+    
 }
 
 .Sub-Container3 .righttext {
     height: 770px;
     width: 287px;
-    background-color: rgb(38, 0, 128);
+    
     position: relative;
     top: 140px;
     left: 155px;
+}
+.head5{
+    height:200px;
+    width:100%;
+    
+}
+.image5{
+    height:280px;
+    width:100%;
+    margin-top:10px;
+    
+
+}
+.foot5{
+    height:270px;
+    width:100%;
+    margin-top:2px;
+    
+    
+}
+.whychoose{
+    height: 35px;
+    width: 200px;
+    padding-top: 5px;
+    border: 2px solid white;
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 2.2px;
+    font-size: 13px;
+    font-weight: 450;
+    display: inline-block;
+    margin-bottom: 18px;
+    color:white;
+}
+.head5 .text{
+    color:white;
+    font-size: 40px;
 }
