@@ -45,7 +45,8 @@
                             <ul class="nav-links">
 
                                 <li>
-                                    <a href='#'><b>Home</b><img src="../IMAGES/icons8-expand-arrow-24.png" alt="icon"></a>
+                                    <a href='#'><b>Home</b><img src="../IMAGES/icons8-expand-arrow-24.png"
+                                            alt="icon"></a>
                                     <ul class="dropdown">
                                         <li><a href='index.html'>Home</a></li>
                                         <li><a href='home-v2.html'>Home V2</a></li>
@@ -55,7 +56,8 @@
 
 
                                 <li>
-                                    <a href='#'><b>Pages</b> <img src="../IMAGES/icons8-expand-arrow-24.png" alt="icon"></a>
+                                    <a href='#'><b>Pages</b> <img src="../IMAGES/icons8-expand-arrow-24.png"
+                                            alt="icon"></a>
                                     <ul class="dropdown">
                                         <li><a href='about.html'>About Us</a></li>
                                         <li><a href='team.html'>Our Team</a></li>
@@ -65,7 +67,8 @@
 
 
                                 <li>
-                                    <a href='#'><b>Services</b> <img src="../IMAGES/icons8-expand-arrow-24.png" alt="icon"></a>
+                                    <a href='#'><b>Services</b> <img src="../IMAGES/icons8-expand-arrow-24.png"
+                                            alt="icon"></a>
                                     <ul class="dropdown">
                                         <li><a href='personal-loans.html'>Personal Loans</a></li>
                                         <li><a href='business-loans.html'>Business Loans</a></li>
@@ -75,7 +78,8 @@
 
 
                                 <li>
-                                    <a href='#'><b>Portfolio</b> <img src="../IMAGES/icons8-expand-arrow-24.png" alt="icon"></a>
+                                    <a href='#'><b>Portfolio</b> <img src="../IMAGES/icons8-expand-arrow-24.png"
+                                            alt="icon"></a>
                                     <ul class="dropdown">
                                         <li><a href='portfolio-grid.html'>Portfolio Grid</a></li>
                                         <li><a href='portfolio-list.html'>Portfolio List</a></li>
@@ -85,7 +89,8 @@
 
 
                                 <li>
-                                    <a href='#'><b>Blog</b> <img src="../IMAGES/icons8-expand-arrow-24.png" alt="icon"></a>
+                                    <a href='#'><b>Blog</b> <img src="../IMAGES/icons8-expand-arrow-24.png"
+                                            alt="icon"></a>
                                     <ul class="dropdown">
                                         <li><a href='blog.html'>Blog</a></li>
                                         <li><a href='blog-single.html'>Blog Post</a></li>
@@ -278,16 +283,47 @@
                 <img src="../IMAGES/image left.jpg" alt="image">
             </div>
             <div class="Information">
+                <div class="headbox2">
+                    <div class="whoweare">
+                        <p>Who We Are</p>
+                    </div>
+                    <div class="head2-sub2">
+                        <h3>Flexible quick and fast buisness loans</h3>
+                    </div>
+                </div>
 
+                <div class="text3">
+                    <p>
+                        Get the funding you need with our flexible and quick business loans.
+                        Tailored to meet your unique needs,our loans offer competitive rates and fast approval.
+                        Empower your business to grow and thrive with the right financial support.
+                    </p>
+                    <div class="ftab">
+                        <ul class="features">
+                            <li>Robust data ensuring client privacy.</li>
+                            <li>Expert assistance every step away.</li>
+                            <li>User-friendly interface application.</li>
+                            <li>Competitive rates to ease financial.</li>
+                            <li>Customized loan plans unique needs.</li>
+                            <li>Streamlined processes for approvals.</li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sub1foot2">
+                    <button class="view-btn">
+                        Get Started
+                        <i class="fa-solid fa-arrow-right arrow"></i>
+                    </button>
+                </div>
             </div>
             <div class="calc">
 
             </div>
-
-        </div>s
-
-
+        </div>
     </div>
+ </div>
 
 
     <script>
@@ -379,7 +415,7 @@
 
     <script>
         // Ultra-robust dropdown navigation handler with fixed positioning
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const navItems = document.querySelectorAll('.nav-links > li');
             let activeDropdown = null;
             let closeTimeout = null;
@@ -396,7 +432,7 @@
             function getExtendedBounds(navItem, dropdown) {
                 const navRect = navItem.getBoundingClientRect();
                 const dropdownRect = dropdown.getBoundingClientRect();
-                
+
                 return {
                     left: Math.min(navRect.left - 25, dropdownRect.left - 25),
                     right: Math.max(navRect.right + 25, dropdownRect.right + 25),
@@ -407,14 +443,14 @@
 
             // Function to check if mouse is within extended bounds
             function isMouseInExtendedArea(mouseX, mouseY, bounds) {
-                return mouseX >= bounds.left && 
-                       mouseX <= bounds.right && 
-                       mouseY >= bounds.top && 
-                       mouseY <= bounds.bottom;
+                return mouseX >= bounds.left &&
+                    mouseX <= bounds.right &&
+                    mouseY >= bounds.top &&
+                    mouseY <= bounds.bottom;
             }
 
             // Global mouse move handler for precise hover detection
-            document.addEventListener('mousemove', function(e) {
+            document.addEventListener('mousemove', function (e) {
                 if (!activeDropdown) return;
 
                 const navItem = activeDropdown.parentElement;
@@ -461,12 +497,12 @@
                     clearTimeout(closeTimeout);
                     closeTimeout = null;
                     isMouseOverNavArea = true;
-                    
+
                     // Hide any other active dropdown
                     if (activeDropdown && activeDropdown !== dropdown) {
                         activeDropdown.classList.remove('show');
                     }
-                    
+
                     // Position and show this dropdown
                     positionDropdown(navItem, dropdown);
                     activeDropdown = dropdown;
@@ -480,40 +516,40 @@
                 const dropdownItems = dropdown.querySelectorAll('li a');
                 dropdownItems.forEach(item => {
                     const listItem = item.parentElement;
-                    
+
                     // Mouse enter - trigger hover animation manually
-                    listItem.addEventListener('mouseenter', function() {
+                    listItem.addEventListener('mouseenter', function () {
                         // Keep dropdown open
                         clearTimeout(closeTimeout);
                         closeTimeout = null;
                         isMouseOverNavArea = true;
-                        
+
                         // Manually trigger hover animation
                         listItem.classList.add('hover-active');
                     });
-                    
+
                     // Mouse leave - remove hover animation
-                    listItem.addEventListener('mouseleave', function() {
+                    listItem.addEventListener('mouseleave', function () {
                         // Remove hover animation
                         listItem.classList.remove('hover-active');
                     });
-                    
+
                     // Also add hover events directly on the link
-                    item.addEventListener('mouseenter', function() {
+                    item.addEventListener('mouseenter', function () {
                         clearTimeout(closeTimeout);
                         closeTimeout = null;
                         isMouseOverNavArea = true;
                         listItem.classList.add('hover-active');
                     });
-                    
-                    item.addEventListener('mouseleave', function() {
+
+                    item.addEventListener('mouseleave', function () {
                         listItem.classList.remove('hover-active');
                     });
-                    
-                    item.addEventListener('click', function(e) {
+
+                    item.addEventListener('click', function (e) {
                         // Don't prevent default - allow navigation
                         console.log('Navigating to:', this.textContent);
-                        
+
                         // Close dropdown after click
                         dropdown.classList.remove('show');
                         activeDropdown = null;
@@ -522,7 +558,7 @@
             });
 
             // Close dropdown when clicking outside navigation area
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', function (e) {
                 const isNavClick = e.target.closest('.nav-links');
                 if (!isNavClick && activeDropdown) {
                     activeDropdown.classList.remove('show');
