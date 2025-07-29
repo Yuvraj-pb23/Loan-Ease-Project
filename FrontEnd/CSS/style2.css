@@ -1209,3 +1209,53 @@ body {
     padding-top: 5px;
     border-top: 1px solid rgb(255, 255, 255, 0.2);
 }
+.Sub-Container4{
+    height:972px;
+    width:100%;
+    background-color: #F2F4F8;
+    padding:125px;
+    display: flex;
+}
+.topsec{
+    height:262px;
+    width:1272px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.topsec .left{
+    height:100%;
+    width:636px;
+}
+.topsec .right{
+    height:100%;
+    width:636px;
+    padding-left: 15px;
+}
+.topsec .right img{
+     object-fit:cover;
+    object-position: center;
+    height:100%;
+    width:100%;
+}
+.process{
+     height: 35px;
+    width: 200px;
+    padding-top: 5px;
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 2.2px;
+    font-size: 13px;
+    font-weight: 450;
+    display: inline-block;
+    margin-bottom: 18px;
+    color: black;
+}
+.head2-sub3{
+    font-size: 40px;
+}
+.topsec .left .text{
+    padding-top: 13px;
+    color: #5d5b5b;
+}
