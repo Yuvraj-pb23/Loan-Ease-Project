@@ -343,3 +343,38 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(rightTextSection);
     }
 });
+
+// ============================
+// PORTFOLIO HOVER EFFECT
+// ============================
+
+document.addEventListener("DOMContentLoaded", function () {
+    const portfolioBoxes = document.querySelectorAll(".Sub-Container5 .trans .box");
+    const imageBoxes = document.querySelectorAll(".Sub-Container5 .image .box");
+
+    // Show first image by default
+    if (imageBoxes.length > 0) {
+        imageBoxes[0].classList.add("show");
+    }
+
+    portfolioBoxes.forEach((box, index) => {
+        // Mouse enter - show corresponding image
+        box.addEventListener("mouseenter", function () {
+            // Hide all images first
+            imageBoxes.forEach(img => img.classList.remove("show"));
+            
+            // Show the corresponding image
+            if (imageBoxes[index]) {
+                imageBoxes[index].classList.add("show");
+            }
+        });
+
+        // Mouse leave - show default (first) image
+        box.addEventListener("mouseleave", function () {
+            imageBoxes.forEach(img => img.classList.remove("show"));
+            if (imageBoxes.length > 0) {
+                imageBoxes[0].classList.add("show");
+            }
+        });
+    });
+});
