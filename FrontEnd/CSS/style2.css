@@ -9,13 +9,19 @@
     height: auto;
 }
 
+.Container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
+}
+
 body {
     font-family: "DM Sans", system-ui;
 }
 
-/* .Container {
-    height: 5000px;
-} */
 
 /* ============================
    HEADER & NAVIGATION STYLES
@@ -295,10 +301,14 @@ body {
 
 /* Main Navigation Bar */
 .navbar {
-    display: flex;
     z-index: 3;
     overflow: visible;
     position: relative;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
 }
 
 /* ============================
@@ -394,6 +404,12 @@ body {
     position: relative;
     overflow: hidden;
     z-index: 0;
+}
+
+.boxx {
+    width: 100%;
+    display: flex;
+    text-align: center;
 }
 
 /* Background Slides */
@@ -571,8 +587,10 @@ body {
 }
 
 .service-container {
-    max-width: 1378px;
-    margin: 40px 80px;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
 }
@@ -870,6 +888,9 @@ body {
     background-color: #dbe7eb;
     display: flex;
     flex-direction: row;
+    text-align: center;
+    justify-content: center;
+
 }
 
 .Sub-Container2 .Image-left,
@@ -877,6 +898,10 @@ body {
     height: 753px;
     width: 348.2px;
     object-fit: cover;
+}
+
+.Sub-Container2 .Image-left {
+    margin-right: 47px;
 }
 
 .Sub-Container2 .Information {
@@ -987,6 +1012,10 @@ body {
     margin-top: 25px;
 }
 
+.Sub-Container2 .right {
+    margin-right: 98px;
+}
+
 .calc .header1 {
     width: 100%;
     height: 94px;
@@ -1047,14 +1076,19 @@ body {
     background-color: #061525;
     display: flex;
     flex-direction: row;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    padding-top: 140px;
+
 }
 
 .Sub-Container3 .lefttext {
     height: 770px;
     width: 990px;
-    position: relative;
+    /* position: relative;
     top: 140px;
-    left: 110px;
+    left: 110px; */
 
 }
 
@@ -1062,9 +1096,9 @@ body {
     height: 770px;
     width: 287px;
 
-    position: relative;
+    /* position: relative;
     top: 140px;
-    left: 155px;
+    left: 155px; */
 }
 
 .head5 {
@@ -1219,7 +1253,10 @@ body {
     background-color: #F2F4F8;
     padding: 125px;
     display: flex;
-    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+
 }
 
 .topsec {
@@ -1295,13 +1332,15 @@ body {
     justify-content: center;
     padding-left: 30px;
 }
-.bottomsec .right .aa{
-    width:241px;
-    padding:20px;
+
+.bottomsec .right .aa {
+    width: 241px;
+    padding: 20px;
 }
-.bottomsec .right .aa .top{
-    height:155px;
-    border-bottom: 1px solid rgb(40, 38, 38,0.7);
+
+.bottomsec .right .aa .top {
+    height: 155px;
+    border-bottom: 1px solid rgb(40, 38, 38, 0.7);
 }
 
 .bottomsec .right .aa .top img {
@@ -1313,31 +1352,49 @@ body {
     transform: rotateY(180deg);
 }
 
-.bottomsec .right .aa .bottom{
-    height:167px;
-    padding-top:20px;
+.bottomsec .right .aa .bottom {
+    height: 167px;
+    padding-top: 20px;
     padding-left: 5px;
     color: #333;
-    
+
 }
-.aa .top p{
-    padding-top:12px;
+
+.aa .top p {
+    padding-top: 12px;
     font-size: 18px;
     font-weight: 500;
 }
-.Sub-Container5{
+
+.Sub-Container5 {
     height: 1004px;
-    width:100%;
-    display:flex;
+    width: 100%;
+    display: flex;
     flex-direction: column;
     padding-top: 100px;
+    justify-content: center;
+    text-align: center;
 }
-.Sub-Container5 .upper{
-    height:207px;
-    width:1320px;
-    margin:0px 100px;
+
+.Sub-Container5 .upper {
+    height: 207px;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
 }
-.Sub-Container5 .upper h3{
+
+.Sub-Container5 .head {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 880px;
+    text-align: center;
+}
+
+.Sub-Container5 .upper .pro {
     height: 35px;
     width: 200px;
     padding-top: 5px;
@@ -1351,22 +1408,26 @@ body {
     margin-bottom: 18px;
     color: black;
 }
-.Sub-Container5 .upper p{
-    font-size:40px;
+
+.Sub-Container5 .upper h6 {
+    font-size: 40px;
     width: 990px;
-    font-weight:700;
-    padding-top: 14px;;
+    font-weight: 700;
+    padding-top: 14px;
+    text-align: center;
 }
-.Sub-Container5 .lower{
+
+.Sub-Container5 .lower {
     height: 697px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     position: relative;
+    justify-content: center;
 }
 
-.box{
+.box {
     height: 100%;
     width: 380px;
 }
@@ -1378,6 +1439,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    justify-content: center;
 }
 
 .Sub-Container5 .image .box {
@@ -1403,9 +1465,10 @@ body {
     position: relative;
     display: flex;
     z-index: 2;
-    
+
 }
-.Sub-Container5 .trans{
+
+.Sub-Container5 .trans {
     background: transparent;
 }
 
@@ -1425,25 +1488,35 @@ body {
     opacity: 1;
     visibility: visible;
 }
-.Sub-Container6{
-    height:852px;
-    width:100%;
+
+.Sub-Container6 {
+    height: 852px;
+    width: 100%;
     background-color: #F2F4F8;
-    padding:100px;
+    padding: 100px;
 
 }
-.Sub-Container6 .up{
-    height:207px;
-    width:100%;
+
+.Sub-Container6 .up {
+    height: 207px;
+    width: 100%;
     display: flex;
     text-align: center;
-    align-items: center;
+    justify-content: center;
 
 }
-.Sub-Container6 .low{
-    height: 444px;;
-    width:100%;
+
+.Sub-Container6 .low {
+    height: 474px;
+    ;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 20px;
+
 }
+
 .Sub-Container6 .process {
     height: 35px;
     width: 200px;
@@ -1458,13 +1531,140 @@ body {
     margin-bottom: 18px;
     color: black;
 }
-.Sub-Container6 .text h6{
+
+.Sub-Container6 .text h6 {
     font-size: 40px;
 }
-.Sub-Container6 .head{
+
+.Sub-Container6 .head {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 880px;
+    text-align: center;
 
+}
+
+.Sub-Container6 .low .outbox {
+    height: 444px;
+    width: 336px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    /* margin: 30px 0px;
+    padding:0px 12px; */
+
+}
+
+.Sub-Container7 {
+    display: flex;
+    padding: 100px 0px;
+    width: 100%;
+    height: 671px;
+    justify-content: center;
+    text-align: center;
+    background-color: #061525;
+    background-image: url('../IMAGES/testimonial-section-background.png');
+}
+
+.Sub-Container7 .inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: var(--align-items);
+    align-self: auto;
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-wrap: var(--flex-wrap);
+    justify-content: var(--justify-content);
+    margin: 0 auto;
+    flex-direction: row;
+}
+
+.Sub-Container7 .inner .more {
+    display: flex;
+    margin: 0px 100px;
+    width: 100%;
+    height: 100%;
+}
+
+.Sub-Container7 .inner .left {
+    width: 33.33%;
+    height: 100%;
+    display: flex;
+    padding: 0px 12px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.Sub-Container7 .inner .right {
+    width: 66.66%;
+    height: 100%;
+    display: flex;
+    padding: 0px 12px 0px 30px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Sub-Container7 .thing {
+    height: 432px;
+    width: 100%;
+}
+
+.thing .top {
+    height: 131px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.Sub-Container7 .head {
+    height: 35px;
+    width: 200px;
+    padding-top: 5px;
+    border: 2px solid rgb(253, 253, 253);
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 2.2px;
+    font-size: 13px;
+    font-weight: 450;
+    display: inline-block;
+    margin-bottom: 18px;
+    color: rgb(255, 255, 255);
+}
+
+.Sub-Container7 h6 {
+    font-size: 50px;
+    text-align: left;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.thing .bottom {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.Sub-Container8 {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #F2F4F8;
+}
+
+.Sub-Container9 {
+    height: 594px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(4, 16, 33, 0.95);
 }
