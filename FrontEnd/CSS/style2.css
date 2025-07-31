@@ -1587,6 +1587,8 @@ body {
     margin: 0px 100px;
     width: 100%;
     height: 100%;
+    max-width: 1320x;
+    justify-content: center;
 }
 
 .Sub-Container7 .inner .left {
@@ -1597,6 +1599,22 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    min-width: 300px;
+    max-width: 380px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.Sub-Container7 .inner .left img {
+    width: 100%;
+    height: 471px;
+    object-fit: cover;
+    border-radius: 10px;
+    max-width: 350px;
+    min-width: 280px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: relative;
 }
 
 .Sub-Container7 .inner .right {
@@ -1633,15 +1651,16 @@ body {
     font-size: 13px;
     font-weight: 450;
     display: inline-block;
-    margin-bottom: 18px;
+
     color: rgb(255, 255, 255);
+    justify-content: center;
 }
 
 .Sub-Container7 h6 {
     font-size: 50px;
     text-align: left;
     color: white;
-    padding-bottom: 20px;
+    padding: 15px 0px;
 }
 
 .thing .bottom {
@@ -1649,6 +1668,88 @@ body {
     width: 100%;
     display: flex;
     justify-content: left;
+}
+
+.Sub-Container7 .thing .button {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+    flex-direction: row;
+}
+
+.Sub-Container7 ul {
+    display: flex;
+    text-decoration: none;
+}
+
+.Sub-Container7 ul li {
+    text-decoration: none;
+    list-style-type: none;
+    opacity: 50%;
+    ;
+}
+
+.Sub-Container7 ul li:hover {
+    opacity: 100%;
+}
+
+.hed p {
+    color: rgb(202, 200, 200);
+    font-size: 19px;
+}
+
+.hed {
+    text-align: left;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(202, 200, 200);
+}
+
+.bott {
+    padding-top: 50px;
+    text-align: left;
+}
+
+.innn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.innn .text {
+    color: white;
+    
+    display: flex;
+    flex-direction: row;
+
+}
+.innn .text img{
+    padding-right: 20px;
+} 
+
+.innn .text h4 {
+    font-size: 25px;
+}
+
+.innn .text p {
+    padding-top: 10px;
+    color: rgb(187, 187, 187);
+    font-size:15px;
+    padding-left: 5px;
+    font-weight: 500;
+
+}
+.innn .mo{
+    text-align: right;
+}
+.mo img{
+    transform: scaleX(-1);
+}
+.cont{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding-top: 10px;
 }
 
 .Sub-Container8 {
