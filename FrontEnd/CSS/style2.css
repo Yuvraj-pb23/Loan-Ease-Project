@@ -1665,9 +1665,13 @@ body {
 
 .thing .bottom {
     height: 300px;
-    width: 100%;
+    width: 843px;
     display: flex;
     justify-content: left;
+    overflow-x: auto;
+}
+.thing .bottom::-webkit-scrollbar {
+    display:none;
 }
 
 .Sub-Container7 .thing .button {
@@ -1703,6 +1707,7 @@ body {
     text-align: left;
     padding-bottom: 25px;
     border-bottom: 1px solid rgb(202, 200, 200);
+    width: 843px
 }
 
 .bott {
@@ -1756,9 +1761,53 @@ body {
     height: 500px;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
     background-color: #F2F4F8;
+}
+.Sub-Container8 .inner{
+    height:300px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+.contt{
+    width:1320px;
+    height:100%;
+    justify-content: space-between;
+    display: flex;
+}
+.contt .left{
+    width:66.66%;
+    height:300px;
+    padding: 0px 12px;
+    text-align: left;
+}
+.contt .left .title{
+    font-size: 45px;
+    text-align: left;
+    font-weight: 700;
+    padding-bottom: 50px;
+}
+.contt .right{
+    width:25%;
+    height:300px;
+    padding: 0px 12px;
+}
+.contt .left .view-btn {
+    background-color: #000;
+    color: white;
+}
+
+.contt .left  .view-btn::before {
+    background-color: #ffffff;
+
+}
+
+.contt .left .view-btn:hover {
+
+    color: rgb(0, 0, 0);
 }
 
 .Sub-Container9 {
