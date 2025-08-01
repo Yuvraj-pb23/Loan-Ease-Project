@@ -1494,8 +1494,9 @@ body {
     width: 100%;
     background-color: #F2F4F8;
     padding: 100px;
-
+    
 }
+
 
 .Sub-Container6 .up {
     height: 207px;
@@ -1508,13 +1509,18 @@ body {
 
 .Sub-Container6 .low {
     height: 474px;
-    ;
     width: 100%;
     display: flex;
     justify-content: center;
     text-align: center;
     padding-bottom: 20px;
+    position: relative;
 
+}
+.Sub-Container6 .outbox img {
+    width: 305px;
+    height: 435px;
+    
 }
 
 .Sub-Container6 .process {
@@ -1548,12 +1554,27 @@ body {
 .Sub-Container6 .low .outbox {
     height: 444px;
     width: 336px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    /* margin: 30px 0px;
-    padding:0px 12px; */
+    position:relative;
 
+}
+.Sub-Container6 .inbox {
+    position: absolute;
+    bottom: 25px;
+    left: 22px;
+    color: #ffffff;
+    padding: 30px;
+    width: 282px;
+    background-color: #061525;
+}
+.Sub-Container6 .inbox h5 {
+    margin-bottom: 6px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+.Sub-Container6 .inbox p {
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .Sub-Container7 {
@@ -1670,8 +1691,9 @@ body {
     justify-content: left;
     overflow-x: auto;
 }
+
 .thing .bottom::-webkit-scrollbar {
-    display:none;
+    display: none;
 }
 
 .Sub-Container7 .thing .button {
@@ -1723,14 +1745,15 @@ body {
 
 .innn .text {
     color: white;
-    
+
     display: flex;
     flex-direction: row;
 
 }
-.innn .text img{
+
+.innn .text img {
     padding-right: 20px;
-} 
+}
 
 .innn .text h4 {
     font-size: 25px;
@@ -1739,18 +1762,21 @@ body {
 .innn .text p {
     padding-top: 10px;
     color: rgb(187, 187, 187);
-    font-size:15px;
+    font-size: 15px;
     padding-left: 5px;
     font-weight: 500;
 
 }
-.innn .mo{
+
+.innn .mo {
     text-align: right;
 }
-.mo img{
+
+.mo img {
     transform: scaleX(-1);
 }
-.cont{
+
+.cont {
     display: flex;
     flex-direction: column;
     width: 200px;
@@ -1766,41 +1792,47 @@ body {
     text-align: center;
     background-color: #F2F4F8;
 }
-.Sub-Container8 .inner{
-    height:300px;
-    width:100%;
+
+.Sub-Container8 .inner {
+    height: 300px;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
-.contt{
-    width:1320px;
-    height:100%;
+
+.contt {
+    width: 1320px;
+    height: 100%;
     justify-content: space-between;
     display: flex;
 }
-.contt .left{
-    width:66.66%;
-    height:300px;
+
+.contt .left {
+    width: 66.66%;
+    height: 300px;
     padding: 0px 12px;
     text-align: left;
 }
-.contt .left .title{
+
+.contt .left .title {
     font-size: 45px;
     text-align: left;
     font-weight: 700;
     padding-bottom: 50px;
 }
-.contt .right{
-    width:25%;
-    height:300px;
+
+.contt .right {
+    width: 25%;
+    height: 300px;
     padding: 0px 12px;
 }
+
 .contt .left .view-btn {
     background-color: #000;
     color: white;
 }
 
-.contt .left  .view-btn::before {
+.contt .left .view-btn::before {
     background-color: #ffffff;
 
 }
@@ -1811,10 +1843,70 @@ body {
 }
 
 .Sub-Container9 {
-    height: 594px;
-    width: 100%;
+    background-image: url('../IMAGES/Footerimg.jpg');
+    background-size: cover;
+    background-position: center;
     display: flex;
-    justify-content: center;
-    text-align: center;
-    background-color: rgba(4, 16, 33, 0.95);
+}
+.Sub-Container9 .imgg{
+    background-color: rgba(4, 16, 33, 0.97);
+    width: 1072px;
+}
+.Sub-Container9 .content {
+    padding-top: 75px;
+    padding-bottom: 75px;
+    display: flex;
+}
+.Sub-Container9 .one {
+    background-color: #0e1c31;
+    width: 450px;  
+}
+
+.Sub-Container9 .left {
+    width: 330px;
+    height: 344px;
+    margin-top: 76px;
+    padding: 0px 12px;
+    text-align: left;
+    margin-left: 100px;
+}
+.Sub-Container9 .left .about img {
+    width: 218px;
+    height: 43px;
+
+}
+.Sub-Container9 h4 {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 600px;
+    line-height: 35px;
+    margin-bottom: 16px;
+}
+.Sub-Container9 .left a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
+}
+.Sub-Container9 ul {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.Sub-Container9 li {
+    list-style-type: none;
+}
+.Sub-Container9 p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    margin: 43px 0px;
+}
+.foott .mmm{
+    background-color: #0B192E;
+    padding: 35px 0;
+    height:100px;
+    width:100%;
+    display:flex;
 }
