@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalPayback = document.getElementById('totalPayback');
 
     // Interest rate (you can make this adjustable too)
-    const annualInterestRate = 0.12; // 12% annual interest rate
+    const annualInterestRate = 0.25; // 12% annual interest rate
 
     function updateSliderBackground(slider, value, min, max) {
         const percentage = ((value - min) / (max - min)) * 100;
