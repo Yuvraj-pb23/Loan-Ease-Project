@@ -174,25 +174,17 @@ body {
 .nav-links li .dropdown {
     list-style: none;
     position: fixed;
-    /* Fixed positioning to bypass all container constraints */
-    top: 238px;
-    /* Approximate position - will be adjusted by JavaScript if needed */
-    left: 0;
-    /* Will be calculated by JavaScript */
     min-width: 190px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-bottom: 3px solid black;
-
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
-
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    z-index: 99999;
-    /* Ultra-high z-index */
+    z-index: 999999;
 }
 
 /* Show dropdown when active class is added by JavaScript */
@@ -200,7 +192,8 @@ body {
     opacity: 1;
     visibility: visible;
     transform: scaleY(1);
-    pointer-events: auto;
+    pointer-events: all;
+    z-index: 999999;
 }
 
 /* Remove all pseudo-element bridges - JavaScript will handle this */
@@ -402,7 +395,8 @@ body {
 .container-main {
     height: 1080px;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    /* Changed from hidden to visible to allow dropdown overflow */
     z-index: 0;
 }
 

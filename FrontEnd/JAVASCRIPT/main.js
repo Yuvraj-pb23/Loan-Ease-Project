@@ -113,150 +113,146 @@ document.addEventListener('DOMContentLoaded', function () {
     const navItems = document.querySelectorAll('.nav-links > li');
     let activeDropdown = null;
     let closeTimeout = null;
-    let isMouseOverNavArea = false;
 
     // Function to position dropdown using fixed positioning
     function positionDropdown(navItem, dropdown) {
         const rect = navItem.getBoundingClientRect();
         dropdown.style.left = rect.left + 'px';
-        dropdown.style.top = (rect.bottom + 5) + 'px'; // 5px gap below nav item
+        dropdown.style.top = (rect.bottom + 5) + 'px';
     }
 
-    // Function to get extended bounds for hover detection
-    function getExtendedBounds(navItem, dropdown) {
-        const navRect = navItem.getBoundingClientRect();
-        const dropdownRect = dropdown.getBoundingClientRect();
+    // Function to show dropdown
+    function showDropdown(navItem, dropdown) {
+        // Clear any existing timeout
+        if (closeTimeout) {
+            clearTimeout(closeTimeout);
+            closeTimeout = null;
+        }
 
-        return {
-            left: Math.min(navRect.left - 25, dropdownRect.left - 25),
-            right: Math.max(navRect.right + 25, dropdownRect.right + 25),
-            top: navRect.top - 15,
-            bottom: Math.max(navRect.bottom + 40, dropdownRect.bottom + 15)
-        };
+        // Hide any other active dropdown
+        if (activeDropdown && activeDropdown !== dropdown) {
+            activeDropdown.classList.remove('show');
+        }
+
+        // Position and show this dropdown
+        positionDropdown(navItem, dropdown);
+        activeDropdown = dropdown;
+        dropdown.classList.add('show');
     }
 
-    // Function to check if mouse is within extended bounds
-    function isMouseInExtendedArea(mouseX, mouseY, bounds) {
-        return mouseX >= bounds.left &&
-            mouseX <= bounds.right &&
-            mouseY >= bounds.top &&
-            mouseY <= bounds.bottom;
+    // Function to hide dropdown with delay
+    function hideDropdown() {
+        if (closeTimeout) {
+            clearTimeout(closeTimeout);
+        }
+        closeTimeout = setTimeout(() => {
+            if (activeDropdown) {
+                activeDropdown.classList.remove('show');
+                activeDropdown = null;
+            }
+        }, 150);
     }
 
-    // Global mouse move handler for precise hover detection
-    document.addEventListener('mousemove', function (e) {
+    // Function to keep dropdown open
+    function keepDropdownOpen() {
+        if (closeTimeout) {
+            clearTimeout(closeTimeout);
+            closeTimeout = null;
+        }
+    }
+
+    // Global mousemove to handle the gap between nav and dropdown
+    document.addEventListener('mousemove', function(e) {
         if (!activeDropdown) return;
 
         const navItem = activeDropdown.parentElement;
-        const bounds = getExtendedBounds(navItem, activeDropdown);
-        const isInArea = isMouseInExtendedArea(e.clientX, e.clientY, bounds);
+        const navRect = navItem.getBoundingClientRect();
+        const dropdownRect = activeDropdown.getBoundingClientRect();
 
-        if (isInArea) {
-            // Mouse is in extended hover area - keep dropdown open
-            clearTimeout(closeTimeout);
-            closeTimeout = null;
-            isMouseOverNavArea = true;
+        // Create a bridge area that connects nav item to dropdown
+        const isInBridgeArea = 
+            e.clientX >= navRect.left && 
+            e.clientX <= navRect.right && 
+            e.clientY >= navRect.bottom && 
+            e.clientY <= dropdownRect.top + 10; // 10px buffer
+
+        const isOverNav = 
+            e.clientX >= navRect.left && 
+            e.clientX <= navRect.right && 
+            e.clientY >= navRect.top && 
+            e.clientY <= navRect.bottom;
+
+        const isOverDropdown = 
+            e.clientX >= dropdownRect.left && 
+            e.clientX <= dropdownRect.right && 
+            e.clientY >= dropdownRect.top && 
+            e.clientY <= dropdownRect.bottom;
+
+        if (isOverNav || isOverDropdown || isInBridgeArea) {
+            keepDropdownOpen();
         } else {
-            // Mouse is outside extended area - start close timer
-            isMouseOverNavArea = false;
-            if (!closeTimeout) {
-                closeTimeout = setTimeout(() => {
-                    if (activeDropdown && !isMouseOverNavArea) {
-                        activeDropdown.classList.remove('show');
-                        activeDropdown = null;
-                    }
-                    closeTimeout = null;
-                }, 100); // Short delay
-            }
+            hideDropdown();
         }
     });
-
-    // Handle window resize/scroll to reposition dropdowns
-    function handlePositionUpdate() {
-        if (activeDropdown) {
-            const navItem = activeDropdown.parentElement;
-            positionDropdown(navItem, activeDropdown);
-        }
-    }
-
-    window.addEventListener('resize', handlePositionUpdate);
-    window.addEventListener('scroll', handlePositionUpdate);
 
     navItems.forEach(navItem => {
         const dropdown = navItem.querySelector('.dropdown');
         if (!dropdown) return;
 
-        // Function to show dropdown
-        function showDropdown() {
-            clearTimeout(closeTimeout);
-            closeTimeout = null;
-            isMouseOverNavArea = true;
+        // Show dropdown on nav item hover
+        navItem.addEventListener('mouseenter', function() {
+            showDropdown(navItem, dropdown);
+        });
 
-            // Hide any other active dropdown
-            if (activeDropdown && activeDropdown !== dropdown) {
-                activeDropdown.classList.remove('show');
-            }
-
-            // Position and show this dropdown
-            positionDropdown(navItem, dropdown);
-            activeDropdown = dropdown;
-            dropdown.classList.add('show');
-        }
-
-        // Mouse enter on nav item
-        navItem.addEventListener('mouseenter', showDropdown);
-
-        // Handle clicks and hover on dropdown items with manual animation triggers
+        // Handle dropdown item interactions
         const dropdownItems = dropdown.querySelectorAll('li a');
         dropdownItems.forEach(item => {
             const listItem = item.parentElement;
 
-            // Mouse enter - trigger hover animation manually
-            listItem.addEventListener('mouseenter', function () {
-                // Keep dropdown open
-                clearTimeout(closeTimeout);
-                closeTimeout = null;
-                isMouseOverNavArea = true;
-
-                // Manually trigger hover animation
+            // Keep dropdown open and add hover effect
+            item.addEventListener('mouseenter', function() {
+                keepDropdownOpen();
                 listItem.classList.add('hover-active');
             });
 
-            // Mouse leave - remove hover animation
-            listItem.addEventListener('mouseleave', function () {
-                // Remove hover animation
+            // Remove hover effect
+            item.addEventListener('mouseleave', function() {
                 listItem.classList.remove('hover-active');
             });
 
-            // Also add hover events directly on the link
-            item.addEventListener('mouseenter', function () {
-                clearTimeout(closeTimeout);
-                closeTimeout = null;
-                isMouseOverNavArea = true;
-                listItem.classList.add('hover-active');
-            });
-
-            item.addEventListener('mouseleave', function () {
-                listItem.classList.remove('hover-active');
-            });
-
-            item.addEventListener('click', function (e) {
-                // Don't prevent default - allow navigation
+            // Handle clicks
+            item.addEventListener('click', function(e) {
                 console.log('Navigating to:', this.textContent);
-
                 // Close dropdown after click
-                dropdown.classList.remove('show');
-                activeDropdown = null;
+                if (activeDropdown) {
+                    activeDropdown.classList.remove('show');
+                    activeDropdown = null;
+                }
             });
         });
     });
 
-    // Close dropdown when clicking outside navigation area
-    document.addEventListener('click', function (e) {
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
         const isNavClick = e.target.closest('.nav-links');
         if (!isNavClick && activeDropdown) {
             activeDropdown.classList.remove('show');
             activeDropdown = null;
+        }
+    });
+
+    // Handle window resize/scroll
+    window.addEventListener('resize', function() {
+        if (activeDropdown) {
+            const navItem = activeDropdown.parentElement;
+            positionDropdown(navItem, activeDropdown);
+        }
+    });
+
+    window.addEventListener('scroll', function() {
+        if (activeDropdown) {
+            const navItem = activeDropdown.parentElement;
+            positionDropdown(navItem, activeDropdown);
         }
     });
 });
