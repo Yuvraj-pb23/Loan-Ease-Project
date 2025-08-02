@@ -352,9 +352,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const portfolioBoxes = document.querySelectorAll(".Sub-Container5 .trans .box");
     const imageBoxes = document.querySelectorAll(".Sub-Container5 .image .box");
 
-    // Show first image by default
-    if (imageBoxes.length > 0) {
-        imageBoxes[0].classList.add("show");
+    // Show second image by default (index 1)
+    if (imageBoxes.length > 1) {
+        imageBoxes[1].classList.add("show");
     }
 
     portfolioBoxes.forEach((box, index) => {
@@ -369,12 +369,167 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // Mouse leave - show default (first) image
+        // Mouse leave - show default (second) image
         box.addEventListener("mouseleave", function () {
             imageBoxes.forEach(img => img.classList.remove("show"));
-            if (imageBoxes.length > 0) {
-                imageBoxes[0].classList.add("show");
+            if (imageBoxes.length > 1) {
+                imageBoxes[1].classList.add("show");
             }
         });
     });
+});
+
+// ============================
+// SUB-CONTAINER7 TESTIMONIAL NAVIGATION
+// ============================
+
+document.addEventListener("DOMContentLoaded", function () {
+    const testimonialContents = document.querySelectorAll('.Sub-Container7 .c1');
+    const navigationButtons = document.querySelectorAll('.Sub-Container7 .button ul li');
+    let currentActiveIndex = 0;
+    
+    // Function to update button opacity based on active content
+    function updateButtonOpacity(activeId) {
+        navigationButtons.forEach((button, index) => {
+            const link = button.querySelector('a');
+            const buttonTarget = link.getAttribute('href').substring(1); // Remove # from href
+            
+            if (buttonTarget === activeId) {
+                button.style.opacity = '1';
+            } else {
+                button.style.opacity = '0.5';
+            }
+        });
+    }
+    
+    // Function to show specific testimonial content with smooth transition
+    function showTestimonial(targetId) {
+        const targetIndex = Array.from(testimonialContents).findIndex(content => content.id === targetId);
+        
+        if (targetIndex === -1 || targetIndex === currentActiveIndex) return;
+        
+        const currentContent = testimonialContents[currentActiveIndex];
+        const targetContent = testimonialContents[targetIndex];
+        
+        // Start slide out animation for current content
+        currentContent.classList.add('slide-out');
+        currentContent.classList.remove('active');
+        
+        // Prepare target content for slide in
+        targetContent.style.display = 'block';
+        targetContent.classList.remove('slide-out');
+        
+        // Small delay to ensure DOM update, then slide in
+        setTimeout(() => {
+            targetContent.classList.add('active');
+        }, 50);
+        
+        // Hide the old content after transition
+        setTimeout(() => {
+            currentContent.style.display = 'none';
+            currentContent.classList.remove('slide-out');
+        }, 600); // Match CSS transition duration
+        
+        currentActiveIndex = targetIndex;
+        updateButtonOpacity(targetId);
+    }
+    
+    // Initialize - show first testimonial and set first button active
+    if (testimonialContents.length > 0) {
+        testimonialContents.forEach((content, index) => {
+            if (index === 0) {
+                content.style.display = 'block';
+                content.classList.add('active');
+                currentActiveIndex = 0;
+            } else {
+                content.style.display = 'none';
+                content.classList.remove('active');
+            }
+        });
+        updateButtonOpacity('11');
+    }
+    
+    // Add click event listeners to navigation buttons
+    navigationButtons.forEach(button => {
+        const link = button.querySelector('a');
+        
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1); // Remove # from href
+            showTestimonial(targetId);
+        });
+    });
+    
+    // Optional: Auto-rotate testimonials every 5 seconds
+    let currentTestimonialIndex = 0;
+    const testimonialIds = ['11', '22', '33', '44'];
+    
+    setInterval(() => {
+        currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonialIds.length;
+        showTestimonial(testimonialIds[currentTestimonialIndex]);
+    }, 5000);
+});
+
+// ============================
+// LOAN CALCULATOR FUNCTIONALITY
+// ============================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loanAmountSlider = document.getElementById('loanAmount');
+    const loanTermSlider = document.getElementById('loanTerm');
+    const loanAmountValue = document.getElementById('loanAmountValue');
+    const loanTermValue = document.getElementById('loanTermValue');
+    const monthlyPayment = document.getElementById('monthlyPayment');
+    const totalPayback = document.getElementById('totalPayback');
+
+    // Interest rate (you can make this adjustable too)
+    const annualInterestRate = 0.12; // 12% annual interest rate
+
+    function updateSliderBackground(slider, value, min, max) {
+        const percentage = ((value - min) / (max - min)) * 100;
+        slider.style.background = `linear-gradient(to right, #000 0%, #000 ${percentage}%, #e0e0e0 ${percentage}%, #e0e0e0 100%)`;
+    }
+
+    function calculatePayments() {
+        const principal = parseFloat(loanAmountSlider.value);
+        const termInMonths = parseInt(loanTermSlider.value);
+        const monthlyInterestRate = annualInterestRate / 12;
+
+        // Calculate monthly payment using loan formula
+        let monthlyPaymentAmount;
+        if (monthlyInterestRate > 0) {
+            monthlyPaymentAmount = principal * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termInMonths)) / 
+                                 (Math.pow(1 + monthlyInterestRate, termInMonths) - 1);
+        } else {
+            monthlyPaymentAmount = principal / termInMonths; // No interest case
+        }
+
+        const totalPaybackAmount = monthlyPaymentAmount * termInMonths;
+
+        // Update display values
+        monthlyPayment.textContent = `₹${Math.round(monthlyPaymentAmount).toLocaleString()}`;
+        totalPayback.textContent = `₹${Math.round(totalPaybackAmount).toLocaleString()}`;
+    }
+
+    function updateLoanAmount() {
+        const value = loanAmountSlider.value;
+        loanAmountValue.textContent = `₹${parseInt(value).toLocaleString()}`;
+        updateSliderBackground(loanAmountSlider, value, loanAmountSlider.min, loanAmountSlider.max);
+        calculatePayments();
+    }
+
+    function updateLoanTerm() {
+        const value = loanTermSlider.value;
+        loanTermValue.textContent = value;
+        updateSliderBackground(loanTermSlider, value, loanTermSlider.min, loanTermSlider.max);
+        calculatePayments();
+    }
+
+    // Event listeners
+    loanAmountSlider.addEventListener('input', updateLoanAmount);
+    loanTermSlider.addEventListener('input', updateLoanTerm);
+
+    // Initialize sliders
+    updateLoanAmount();
+    updateLoanTerm();
 });
