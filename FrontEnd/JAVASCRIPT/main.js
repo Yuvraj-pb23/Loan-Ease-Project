@@ -547,3 +547,20 @@ document.addEventListener('DOMContentLoaded', function() {
     updateLoanAmount();
     updateLoanTerm();
 });
+
+// ============================
+// STICKY NAVIGATION FUNCTIONALITY
+// ============================
+
+document.addEventListener('DOMContentLoaded', function () {
+    const stickyNav = document.getElementById('stickyNav');
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        if (scrollY >= 100) {
+            stickyNav.classList.add('show');
+        } else {
+            stickyNav.classList.remove('show');
+        }
+    });
+});
