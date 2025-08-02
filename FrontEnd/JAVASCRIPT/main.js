@@ -220,8 +220,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 listItem.classList.remove('hover-active');
             });
 
-            // Handle clicks
+            // Handle clicks with both click and mousedown for better reliability
             item.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default navigation
                 console.log('Navigating to:', this.textContent);
                 // Close dropdown after click
                 if (activeDropdown) {
@@ -229,13 +230,30 @@ document.addEventListener('DOMContentLoaded', function () {
                     activeDropdown = null;
                 }
             });
+
+            // Also handle mousedown as backup
+            item.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                console.log('Mousedown on:', this.textContent);
+            });
         });
     });
 
-    // Close dropdown when clicking outside
+    // Add event delegation for dropdown clicks as backup
     document.addEventListener('click', function(e) {
+        // Check if clicked element is a dropdown link
+        const dropdownLink = e.target.closest('.dropdown li a');
+        if (dropdownLink && activeDropdown) {
+            e.preventDefault();
+            console.log('Event delegation click:', dropdownLink.textContent);
+            // Close dropdown
+            activeDropdown.classList.remove('show');
+            activeDropdown = null;
+        }
+        
+        // Close dropdown when clicking outside
         const isNavClick = e.target.closest('.nav-links');
-        if (!isNavClick && activeDropdown) {
+        if (!isNavClick && !dropdownLink && activeDropdown) {
             activeDropdown.classList.remove('show');
             activeDropdown = null;
         }

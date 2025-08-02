@@ -50,6 +50,10 @@ body {
 .topbar1 span {
     height: 40px;
 }
+.topbar1 a{
+    text-decoration: none;
+    color:white;
+}
 
 /* Container Layout */
 .container1 {
@@ -71,21 +75,17 @@ body {
     z-index: 1;
 }
 
-/* Ensure all navigation containers allow dropdown overflow */
 .topbar2 {
     position: relative;
     overflow: visible;
     z-index: 3;
-    height: auto;
-    /* Allow height to expand for dropdowns */
-    min-height: 80px;
+    height: 80px;
 }
 
 .main.nav {
     position: relative;
     overflow: visible;
     height: auto;
-    /* Allow height to expand */
 }
 
 /* Contact Information Section */
@@ -98,6 +98,7 @@ body {
     width: 1040px;
     background-color: #061525;
     color: white;
+    text-align: left;
 }
 
 .cons i {
@@ -121,7 +122,10 @@ body {
 .container1 .socials i {
     margin-right: 20px;
 }
-
+.container1 .socials a{
+    text-decoration: none;
+    color: White;
+}
 /* Navigation Links */
 .nav-links {
     display: flex;
@@ -239,38 +243,43 @@ body {
     background-color: #ffffff;
 }
 
+/* Enhanced underline animation with higher specificity */
 .nav-links li .dropdown li a {
     position: relative;
-    display: block;
+    display:inline-block;
     text-decoration: none;
     color: black;
     transition: color 0.7s ease;
     padding: 12px 18px;
     z-index: 10;
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: transparent;
+    width: 100%;
+    text-align: left;
+    
+    overflow: hidden;
 }
 
-/* Enhanced underline animation with higher specificity */
 .nav-links li .dropdown li a::after {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: 6px;
-    height: 2px;
+    bottom: 4px;
+    left: 18px;
+    height: 1px;
     width: 0;
     background-color: #000;
     background: linear-gradient(90deg, #000 0%, #333 100%);
     transition: width 0.5s ease-in-out;
-    transform-origin: left;
     z-index: 10;
+    transform-origin: left;
+    max-width: calc(100% - 36px);
 }
 
-/* Multiple hover selectors with !important to ensure they work */
+/* Clean hover animation - left to right sliding effect */
 .nav-links li .dropdown li:hover a::after,
 .dropdown li:hover a::after,
 .nav-links li .dropdown.show li:hover a::after {
-    width: 100% !important;
+    width: 100%;
 }
 
 /* Text color change on hover */
@@ -279,18 +288,7 @@ body {
     color: #000000;
 }
 
-/* Force animation class - triggered by JavaScript */
-.dropdown li.hover-active a::after,
-.nav-links li .dropdown li.hover-active a::after {
-    width: 100% !important;
-    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
 
-/* Backup animation using focus */
-.dropdown li a:focus::after,
-.nav-links li .dropdown li a:focus::after {
-    width: 100%;
-}
 
 /* Main Navigation Bar */
 .navbar {
@@ -337,16 +335,24 @@ body {
     background-color: rgba(255, 255, 255, 0);
     height: 49px;
     width: 170px;
-    color: white;
+    
     overflow: hidden;
     z-index: 1;
     transition: color 0.5s ease;
 }
+.get-started-btn a, .contact-btn a{
+    text-decoration: none;
+    color: white;
+}
 
-.get-started-btn:hover,
-.contact-btn:hover {
+.get-started-btn:hover a,
+.contact-btn:hover a {
     color: black;
 }
+
+/* .get-started-btn:hover a {
+    color: black; */
+
 
 .get-started-btn::before,
 .contact-btn::before {
@@ -358,7 +364,7 @@ body {
     height: 800%;
     background: white;
     transform: translate(-100%, -100%) rotate(120deg);
-    transition: transform 0.8s ease;
+    transition: transform 0.4s ease;
     z-index: -1;
 }
 
@@ -395,9 +401,15 @@ body {
 .container-main {
     height: 1080px;
     position: relative;
-    overflow: visible;
-    /* Changed from hidden to visible to allow dropdown overflow */
+    overflow: hidden;
     z-index: 0;
+}
+
+/* Allow navbar and dropdowns to overflow */
+.container-main > .navbar {
+    position: relative;
+    z-index: 999;
+    overflow: visible;
 }
 
 .boxx {
@@ -412,13 +424,16 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 1080px;
+    height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     opacity: 0;
     transition: opacity 1.5s ease-in-out, transform 10s ease-in-out;
     z-index: 0;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .bg-slide,
@@ -442,6 +457,10 @@ body {
 .Partner {
     position: relative;
     z-index: 2;
+    text-align: left;
+}
+.container-main>.navbar{
+    z-index: 10;
 }
 
 /* ============================
@@ -754,7 +773,7 @@ body {
     border-radius: 30px;
     border: 1px solid rgb(0, 0, 0);
     text-align: center;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(0, 0, 0);
     height: 49px;
     width: 170px;
     color: rgb(0, 0, 0);
@@ -764,9 +783,13 @@ body {
     transition: color 0.5s ease;
 
 }
+.view-btn a{
+    text-decoration: none;
+    color: rgb(251, 251, 251);
+}
 
-.view-btn:hover {
-    color: rgb(255, 255, 255);
+.view-btn:hover a {
+    color: rgb(11, 11, 11);
 
 }
 
@@ -777,9 +800,9 @@ body {
     left: 0;
     width: 200%;
     height: 800%;
-    background: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
     transform: translate(-100%, -100%) rotate(120deg);
-    transition: transform 0.8s ease;
+    transition: transform 0.4s ease-in;
     z-index: -1;
 }
 
@@ -802,6 +825,8 @@ body {
 
 .sub1foot {
     width: 100%;
+    display: flex;
+    justify-content: center;
     height: 80px;
     text-align: center;
     padding-top: 20px;
@@ -2202,6 +2227,9 @@ body {
     align-items: center;
     gap: 10px;
 }
+.Sub-Container9 li a:hover{
+    color: white;
+}
 
 .Sub-Container9 li a::after {
     content: "";
@@ -2212,6 +2240,7 @@ body {
     width: 0;
     background-color: #747474;
     transition: width 0.3s ease-in-out;
+    
 }
 
 .Sub-Container9 li:hover a::after {
@@ -2260,17 +2289,62 @@ body {
     font-size: 16px;
 }
 
-.Sub-Container9 button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    line-height: 20px;
-    padding: 10px 15px;
-    background: transparent;
-    border: 1px solid #ffffff;
+.Sub-Container9 button{
+    font-size: medium;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 11px 5px 11px 9px;
     border-radius: 30px;
-    color: #ffffff;
+    border: 1px solid white;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+    height: 49px;
+    width: 170px;
+    
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.5s ease;
+}
+.Sub-Container9 button  a{
+    text-decoration: none;
+    color: white;
+    justify-content: center;
+}
+
+.Sub-Container9 button:hover a{
+    color: black;
+}
+
+
+
+.Sub-Container9 button::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 800%;
+    background: white;
+    transform: translate(-100%, -100%) rotate(120deg);
+    transition: transform 0.5s ease;
+    z-index: -1;
+}
+
+.Sub-Container9 button:hover::before {
+    transform: translate(-50%, -50%) rotate(120deg);
+}
+
+.Sub-Container9 button a.arrow {
+    margin: 0px 6px;
+    display: inline-block;
+    transition: transform 0.4s ease;
+    transform-origin: center center;
+    font-size: 14px;
+}
+
+.Sub-Container9 button:hover .arrow{
+    transform: rotate(-45deg);
 }
 
 .Sub-Container9 .icons {
@@ -2309,4 +2383,7 @@ body {
 
 .nnn a {
     text-decoration: none;
+}
+.nnn a:hover,.mmm p:hover{
+    color:white
 }
