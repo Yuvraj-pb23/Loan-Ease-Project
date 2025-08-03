@@ -34,7 +34,7 @@ body {
     font-size: 23px;
     padding: 50px 33px 40px 33px;
     border-bottom: 0.2px solid white;
-    height: 140px;
+    height: 130px;
     display: flex;
     width: 300px;
     color: rgb(250, 250, 250);
@@ -60,7 +60,7 @@ body {
 .container1 {
     display: flex;
     border-left: 0.2px solid white;
-    height: 60px;
+    height: 50px;
     overflow: visible;
     position: relative;
 }
@@ -130,7 +130,7 @@ body {
 /* Navigation Links */
 .nav-links {
     display: flex;
-    padding: 22px 19px 15px 40px;
+    padding: 20px 19px 20px 40px;
     width: 1030px;
     list-style: none;
     position: relative;
@@ -164,7 +164,7 @@ body {
 
 .nav-links>li {
     position: relative;
-    padding-bottom: 10px;
+    padding-top: 6px;
     /* Reduced padding - JavaScript will handle hover */
 }
 
@@ -175,17 +175,17 @@ body {
     text-decoration: none;
 }
 
-/* Dropdown Menu Styles - Fixed positioning to bypass container issues */
+/* Dropdown Menu Styles - Positioned below navbar */
 .nav-links li .dropdown {
     list-style: none;
     position: fixed;
-    min-width: 190px;
+    min-width: 210px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-bottom: 3px solid black;
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.6s ease-in-out;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -201,8 +201,6 @@ body {
     z-index: 999999;
 }
 
-/* Remove all pseudo-element bridges - JavaScript will handle this */
-
 /* Dropdown Items - Enhanced with better specificity */
 .dropdown li {
     font-size: 14px;
@@ -212,11 +210,7 @@ body {
 
 .dropdown {
     z-index: 99999;
-    /* Already good */
     pointer-events: auto !important;
-    /* Force clickable */
-    position: fixed;
-    /* Already good */
     background-color: rgba(255, 255, 255, 0.97);
 }
 
@@ -257,14 +251,13 @@ body {
     background-color: transparent;
     width: 100%;
     text-align: left;
-    
     overflow: hidden;
 }
 
 .nav-links li .dropdown li a::after {
     content: "";
     position: absolute;
-    bottom: 4px;
+    bottom: 6px;
     left: 18px;
     height: 1px;
     width: 0;
@@ -310,14 +303,14 @@ body {
 
 /* Search & Start Section */
 .start {
-    padding: 13px 19px 15px 20px;
+    padding: 15px 19px 15px 20px;
     display: flex;
     width: 260px;
     height: 85px;
 }
 
 .start .search {
-    padding: 10px 30px 10px 0px;
+    padding: 15px 30px 10px 0px;
     width: 30px;
     font-size: 20px;
     color: white;

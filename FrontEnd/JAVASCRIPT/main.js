@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function positionDropdown(navItem, dropdown) {
         const rect = navItem.getBoundingClientRect();
         dropdown.style.left = rect.left + 'px';
-        dropdown.style.top = (rect.bottom + 5) + 'px';
+        dropdown.style.top = (rect.bottom + 20) + 'px';
     }
 
     // Function to show dropdown
