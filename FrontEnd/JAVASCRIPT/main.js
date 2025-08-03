@@ -106,172 +106,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ============================
-// DROPDOWN NAVIGATION SYSTEM
+// DROPDOWN NAVIGATION SYSTEM - SIMPLIFIED
 // ============================
 
 document.addEventListener('DOMContentLoaded', function () {
-    const navItems = document.querySelectorAll('.nav-links > li');
-    let activeDropdown = null;
-    let closeTimeout = null;
-
-    // Function to position dropdown using fixed positioning
-    function positionDropdown(navItem, dropdown) {
-        const rect = navItem.getBoundingClientRect();
-        dropdown.style.left = rect.left + 'px';
-        dropdown.style.top = (rect.bottom + 20) + 'px';
-    }
-
-    // Function to show dropdown
-    function showDropdown(navItem, dropdown) {
-        // Clear any existing timeout
-        if (closeTimeout) {
-            clearTimeout(closeTimeout);
-            closeTimeout = null;
-        }
-
-        // Hide any other active dropdown
-        if (activeDropdown && activeDropdown !== dropdown) {
-            activeDropdown.classList.remove('show');
-        }
-
-        // Position and show this dropdown
-        positionDropdown(navItem, dropdown);
-        activeDropdown = dropdown;
-        dropdown.classList.add('show');
-    }
-
-    // Function to hide dropdown with delay
-    function hideDropdown() {
-        if (closeTimeout) {
-            clearTimeout(closeTimeout);
-        }
-        closeTimeout = setTimeout(() => {
-            if (activeDropdown) {
-                activeDropdown.classList.remove('show');
-                activeDropdown = null;
-            }
-        }, 150);
-    }
-
-    // Function to keep dropdown open
-    function keepDropdownOpen() {
-        if (closeTimeout) {
-            clearTimeout(closeTimeout);
-            closeTimeout = null;
-        }
-    }
-
-    // Global mousemove to handle the gap between nav and dropdown
-    document.addEventListener('mousemove', function(e) {
-        if (!activeDropdown) return;
-
-        const navItem = activeDropdown.parentElement;
-        const navRect = navItem.getBoundingClientRect();
-        const dropdownRect = activeDropdown.getBoundingClientRect();
-
-        // Create a bridge area that connects nav item to dropdown
-        const isInBridgeArea = 
-            e.clientX >= navRect.left && 
-            e.clientX <= navRect.right && 
-            e.clientY >= navRect.bottom && 
-            e.clientY <= dropdownRect.top + 10; // 10px buffer
-
-        const isOverNav = 
-            e.clientX >= navRect.left && 
-            e.clientX <= navRect.right && 
-            e.clientY >= navRect.top && 
-            e.clientY <= navRect.bottom;
-
-        const isOverDropdown = 
-            e.clientX >= dropdownRect.left && 
-            e.clientX <= dropdownRect.right && 
-            e.clientY >= dropdownRect.top && 
-            e.clientY <= dropdownRect.bottom;
-
-        if (isOverNav || isOverDropdown || isInBridgeArea) {
-            keepDropdownOpen();
-        } else {
-            hideDropdown();
-        }
-    });
-
-    navItems.forEach(navItem => {
-        const dropdown = navItem.querySelector('.dropdown');
-        if (!dropdown) return;
-
-        // Show dropdown on nav item hover
-        navItem.addEventListener('mouseenter', function() {
-            showDropdown(navItem, dropdown);
-        });
-
-        // Handle dropdown item interactions
-        const dropdownItems = dropdown.querySelectorAll('li a');
-        dropdownItems.forEach(item => {
-            const listItem = item.parentElement;
-
-            // Keep dropdown open and add hover effect
-            item.addEventListener('mouseenter', function() {
-                keepDropdownOpen();
-                listItem.classList.add('hover-active');
-            });
-
-            // Remove hover effect
-            item.addEventListener('mouseleave', function() {
-                listItem.classList.remove('hover-active');
-            });
-
-            // Handle clicks with both click and mousedown for better reliability
-            item.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default navigation
-                console.log('Navigating to:', this.textContent);
-                // Close dropdown after click
-                if (activeDropdown) {
-                    activeDropdown.classList.remove('show');
-                    activeDropdown = null;
-                }
-            });
-
-            // Also handle mousedown as backup
-            item.addEventListener('mousedown', function(e) {
+    // Simple dropdown functionality - let CSS handle the showing/hiding
+    // This just ensures links work properly
+    const dropdownLinks = document.querySelectorAll('.dropdown li a');
+    
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Only prevent default for placeholder links (#)
+            if (this.getAttribute('href') === '#') {
                 e.preventDefault();
-                console.log('Mousedown on:', this.textContent);
-            });
+                console.log('Placeholder link clicked:', this.textContent);
+            }
+            // For real links, let them navigate normally
         });
-    });
-
-    // Add event delegation for dropdown clicks as backup
-    document.addEventListener('click', function(e) {
-        // Check if clicked element is a dropdown link
-        const dropdownLink = e.target.closest('.dropdown li a');
-        if (dropdownLink && activeDropdown) {
-            e.preventDefault();
-            console.log('Event delegation click:', dropdownLink.textContent);
-            // Close dropdown
-            activeDropdown.classList.remove('show');
-            activeDropdown = null;
-        }
-        
-        // Close dropdown when clicking outside
-        const isNavClick = e.target.closest('.nav-links');
-        if (!isNavClick && !dropdownLink && activeDropdown) {
-            activeDropdown.classList.remove('show');
-            activeDropdown = null;
-        }
-    });
-
-    // Handle window resize/scroll
-    window.addEventListener('resize', function() {
-        if (activeDropdown) {
-            const navItem = activeDropdown.parentElement;
-            positionDropdown(navItem, activeDropdown);
-        }
-    });
-
-    window.addEventListener('scroll', function() {
-        if (activeDropdown) {
-            const navItem = activeDropdown.parentElement;
-            positionDropdown(navItem, activeDropdown);
-        }
     });
 });
 

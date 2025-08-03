@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 0px 100px;
+    padding: 25px;
+}
+
+.navbar .links ul {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    gap: 30px;
+    list-style: none;
+}
+
+.links li a {
+    text-decoration: none;
+    color: black;
+}
+
+.cons {
+    border-left: 1px solid black;
+    padding-left: 30px;
+}
+
+.cons a {
+    color: black;
+    text-decoration: none;
+}
+
+.show {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.show::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(6, 21, 37, 0.9) 80%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.show .img img {
+    transform-origin: center center;
+    display: block;
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.show .text {
+    position: absolute;
+    top: 180px;
+    left: 100px;
+    color: white;
+    z-index: 3;
+}
+
+.show .text h2 {
+    font-size: 45px;
+    padding-bottom: 20px;
+}
+
+.text .bel h4 {
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.text .bel {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    vertical-align: middle;
+}
+
+.text .bel a {
+    text-decoration: none;
+    color: white;
+}
+
+.text p {
+    padding: 0px 12px;
+    padding-top: 0.5px;
+}

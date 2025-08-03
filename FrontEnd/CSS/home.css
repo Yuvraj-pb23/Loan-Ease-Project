@@ -178,27 +178,28 @@ body {
 /* Dropdown Menu Styles - Positioned below navbar */
 .nav-links li .dropdown {
     list-style: none;
-    position: fixed;
+    position: absolute;
+    top: 100%;
+    left: 0;
     min-width: 210px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-bottom: 3px solid black;
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.6s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
     z-index: 999999;
 }
 
-/* Show dropdown when active class is added by JavaScript */
-.nav-links li .dropdown.show {
+/* Show dropdown on hover */
+.nav-links li:hover .dropdown {
     opacity: 1;
     visibility: visible;
     transform: scaleY(1);
-    pointer-events: all;
     z-index: 999999;
+    background-color: white;
 }
 
 /* Dropdown Items - Enhanced with better specificity */
@@ -208,11 +209,7 @@ body {
     font-weight: 400;
 }
 
-.dropdown {
-    z-index: 99999;
-    pointer-events: auto !important;
-    background-color: rgba(255, 255, 255, 0.97);
-}
+/* Conflicting dropdown rule removed */
 
 .nav-links li .dropdown li {
     position: relative;
@@ -228,11 +225,7 @@ body {
     display: block;
 }
 
-.nav-links li .dropdown {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+/* Conflicting dropdown rule removed */
 
 .nav-links li .dropdown li:hover {
     background-color: #ffffff;
