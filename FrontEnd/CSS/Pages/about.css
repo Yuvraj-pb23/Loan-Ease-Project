@@ -12,6 +12,14 @@
     margin: 0px 100px;
     padding: 25px;
 }
+.navbar .links{
+    display: flex;
+    align-items: center;
+}
+.navbar .links li a{
+    font-size: 19px;
+    
+}
 
 .navbar .links ul {
     display: flex;
@@ -29,11 +37,26 @@
 .cons {
     border-left: 1px solid black;
     padding-left: 30px;
+    width:250px;
+    display: flex;
+
+}
+.cons .search{
+    margin-right: 20px;
 }
 
 .cons a {
     color: black;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.cons a img{
+    margin-right: 10px;
+    margin-left: 20px;
+}
+.cons a p{
+    font-size: 19px;
 }
 
 .show {
@@ -96,4 +119,174 @@
 .text p {
     padding: 0px 12px;
     padding-top: 0.5px;
+}
+
+.footer {
+    background-color: #061525;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    padding: 70px;
+    padding-bottom: 0px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer li {
+    list-style-type: none;
+}
+
+.footer .left {
+    padding-left: 20px;
+    width: 650px;
+    border-right: 1px solid rgba(156, 156, 156, 0.485);
+}
+
+.footer .left li {
+    border-bottom: 1px solid rgba(156, 156, 156, 0.485);
+    padding: 35px 0px;
+}
+
+.footer .left li p {
+    font-size: 17px;
+    padding-bottom: 5px;
+    color: rgb(195, 195, 195);
+}
+
+.footer .left li a,
+.footer .left li h4 {
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.footer .left .btm li {
+    border-bottom: none;
+}
+
+.footer .right {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 80px;
+    padding-top: 32px;
+}
+
+.footer .right .service,
+.footer .right .page {
+    padding: 10px;
+    margin: 10px;
+
+}
+.footer .right a{
+    display: flex;
+    align-items: center;
+}
+.footer .right a:hover{
+    color:rgb(255, 255, 255);
+    
+}
+.footer .right a img{
+    margin-right: 10px;
+}
+
+.service h3,
+.page h3 {
+    padding-bottom: 20px;
+    font-size: 25px;
+}
+
+.service .mg-top,
+.page .mg-top {
+    width: 200px;
+    padding-top: 10px;
+    font-size: 17px;
+}
+
+.service .mg-top a,
+.page .mg-top a {
+    color: rgb(195, 195, 195);
+}
+
+.sub {
+    padding-left: 40px;
+}
+
+.sub img {
+    padding-bottom: 40px;
+}
+
+.sub h4 {
+    padding-bottom: 20px;
+    font-size: 25px;
+}
+
+.sub p {
+    font-size: 17px;
+    color: rgb(195, 195, 195);
+    line-height: 1.4;
+}
+
+.sub form {
+    padding-top: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub form input {
+    border: none;
+    color: #ffffff;
+    height: 42px;
+    padding-left: 15px;
+    background: none;
+    font-size: 16px;
+    width: 285px;
+}
+
+.sub button {
+    background-color: #061525;
+    padding: 12px;
+    border-radius: 50px;
+}
+
+.foott {
+    background-color: #0B192E;
+}
+
+.foott .lll {
+    padding: 35px 0px;
+    max-width: 1343px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.foott .mmm p,
+.nnn a {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.foott .nnn ul {
+    display: flex;
+    gap: 34px;
+}
+
+.nnn li {
+    list-style-type: none;
+}
+
+.nnn a {
+    text-decoration: none;
+}
+.nnn a:hover,.mmm p:hover{
+    color:white
 }

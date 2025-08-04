@@ -2118,7 +2118,8 @@ body {
 .Sub-Container9 .content {
     padding-top: 75px;
     padding-bottom: 75px;
-    padding-right: 145px;
+    padding-right: 70px;
+    padding-left: 40px;
 }
 
 .Sub-Container9 .one {
@@ -2187,7 +2188,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 0px 12px;
+    padding: 0px 37px;
     margin-top: 15px;
     width: 439px;
     height: 400px;
@@ -2195,8 +2196,8 @@ body {
 }
 
 .mg-sides {
-    margin-left: 38px;
-    margin-right: 38px;
+    margin-left: 25px;
+    margin-right: 25px;
     text-align: left;
 }
 
