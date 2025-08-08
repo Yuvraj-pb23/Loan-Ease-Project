@@ -399,3 +399,33 @@ document.addEventListener('DOMContentLoaded', function() {
     updateLoanTerm();
 });
 
+
+
+//SEARCH OVERLAY
+  const searchIcon = document.getElementById("searchIcon");    // Get the search icon element
+  const closeSearch = document.getElementById("closeSearch");    // Get the close (×) button element
+  const searchOverlay = document.getElementById("searchOverlay");    // Get the search overlay element
+
+  searchIcon.onclick = function () {    // When search icon is clicked
+    searchOverlay.style.display = "block";    // Make it visible first
+    setTimeout(() => {
+      searchOverlay.classList.add("show");    // Add show class for animation
+    }, 10); // Small delay to ensure display change is processed
+    document.body.style.overflow = "hidden";
+  };
+
+  closeSearch.onclick = function () {    // When close button is clicked
+    searchOverlay.classList.remove("show");    // Remove show class for animation
+    setTimeout(() => {
+      searchOverlay.style.display = "none";    // Hide after animation completes
+    }, 600); // Match the CSS transition duration (reduced from 400ms)
+    document.body.style.overflow = "";
+  };
+
+//   searchOverlay.onclick = function (e) {    // When clicking anywhere on the overlay
+//     if (!e.target.closest(".panel")) {    // If the click is NOT inside the .panel (search box)
+//       searchOverlay.style.display = "none";    // Hide the overlay
+//       document.body.style.overflow = "";
+
+//     }
+//   };
