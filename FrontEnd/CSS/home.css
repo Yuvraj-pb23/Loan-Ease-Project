@@ -51,9 +51,10 @@ body {
 .topbar1 span {
     height: 40px;
 }
-.topbar1 a{
+
+.topbar1 a {
     text-decoration: none;
-    color:white;
+    color: white;
 }
 
 /* Container Layout */
@@ -124,10 +125,12 @@ body {
 .container1 .socials i {
     margin-right: 20px;
 }
-.container1 .socials a{
+
+.container1 .socials a {
     text-decoration: none;
     color: White;
 }
+
 /* Navigation Links */
 .nav-links {
     display: flex;
@@ -235,7 +238,7 @@ body {
 /* Enhanced underline animation with higher specificity */
 .nav-links li .dropdown li a {
     position: relative;
-    display:inline-block;
+    display: inline-block;
     text-decoration: none;
     color: black;
     transition: color 0.7s ease;
@@ -311,6 +314,10 @@ body {
     cursor: pointer;
 }
 
+.start .search:hover {
+    color: #d1d1d1;
+}
+
 /*Search overlay*/
 .overlay {
     position: fixed;
@@ -318,7 +325,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -329,6 +336,7 @@ body {
     opacity: 1;
     visibility: visible;
 }
+
 .overlay .close-btn {
     position: absolute;
     top: 190px;
@@ -342,12 +350,14 @@ body {
     background-color: white;
     border-radius: 100%;
 }
+
 .panel {
     max-width: 700px;
     margin: auto;
     margin-top: 392px;
     position: relative;
 }
+
 .overlay input {
     width: 700px;
     height: 70px;
@@ -370,12 +380,14 @@ body {
     background-color: rgba(255, 255, 255, 0);
     height: 49px;
     width: 170px;
-    
+
     overflow: hidden;
     z-index: 1;
     transition: color 0.5s ease;
 }
-.get-started-btn a, .contact-btn a{
+
+.get-started-btn a,
+.contact-btn a {
     text-decoration: none;
     color: white;
 }
@@ -441,7 +453,7 @@ body {
 }
 
 /* Allow navbar and dropdowns to overflow */
-.container-main > .navbar {
+.container-main>.navbar {
     position: relative;
     z-index: 999;
     overflow: visible;
@@ -494,7 +506,8 @@ body {
     z-index: 2;
     text-align: left;
 }
-.container-main>.navbar{
+
+.container-main>.navbar {
     z-index: 10;
 }
 
@@ -820,7 +833,8 @@ body {
     transition: color 0.5s ease;
 
 }
-.view-btn a{
+
+.view-btn a {
     text-decoration: none;
     color: rgb(251, 251, 251);
 }
@@ -2266,7 +2280,8 @@ body {
     align-items: center;
     gap: 10px;
 }
-.Sub-Container9 li a:hover{
+
+.Sub-Container9 li a:hover {
     color: white;
 }
 
@@ -2279,7 +2294,7 @@ body {
     width: 0;
     background-color: #747474;
     transition: width 0.3s ease-in-out;
-    
+
 }
 
 .Sub-Container9 li:hover a::after {
@@ -2328,7 +2343,7 @@ body {
     font-size: 16px;
 }
 
-.Sub-Container9 button{
+.Sub-Container9 button {
     font-size: medium;
     margin-left: 10px;
     margin-bottom: 10px;
@@ -2340,24 +2355,25 @@ body {
     background-color: rgba(255, 255, 255, 0);
     height: 49px;
     width: 170px;
-    
+
     overflow: hidden;
     z-index: 1;
     transition: color 0.5s ease;
 }
-.Sub-Container9 button  a{
+
+.Sub-Container9 button a {
     text-decoration: none;
     color: white;
     justify-content: center;
 }
 
-.Sub-Container9 button:hover a{
+.Sub-Container9 button:hover a {
     color: black;
 }
 
 
 
-.Sub-Container9 button::before{
+.Sub-Container9 button::before {
     content: "";
     position: absolute;
     top: 0;
@@ -2382,7 +2398,7 @@ body {
     font-size: 14px;
 }
 
-.Sub-Container9 button:hover .arrow{
+.Sub-Container9 button:hover .arrow {
     transform: rotate(-45deg);
 }
 
@@ -2423,6 +2439,8 @@ body {
 .nnn a {
     text-decoration: none;
 }
-.nnn a:hover,.mmm p:hover{
-    color:white
+
+.nnn a:hover,
+.mmm p:hover {
+    color: white
 }
